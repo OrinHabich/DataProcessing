@@ -16,7 +16,7 @@ def extract_tvseries(dom):
     '''
     Extract a list of highest rated TV series from DOM (of IMDB page).
 
-    Each TV series entry contains Title, Rating, Genres, Actors and Runtime 
+    Each TV series entry contains Title, Rating, Genres, Actors and Runtime
     '''
 
     tvserieslist = []
@@ -24,24 +24,26 @@ def extract_tvseries(dom):
     # iterate over highest rated TV-series
     for tvseries in dom.by_tag("div.lister-item-content"):
 
-        # extract title
+        # extract title and add to tvserieslist
         tvserieslist.append(tvseries.by_tag("a")[0].content.encode('utf-8'))
 
-        # extract rating
+        # extract rating and add to tvserieslist
         tvserieslist.append(tvseries.by_tag("strong")[0].content)
 
-        # extract genre
+        # extract genre and add to tvserieslist
         tvserieslist.append(tvseries.by_class("genre")[0].content.strip())
 
-        # extract actors/actresses
+        # extract actors/actresses and add to tvserieslist
         actors = ""
         for actor in tvseries.by_tag("p")[2].by_tag("a"):
             actors += ', ' + actor.content.encode('utf-8')
         tvserieslist.append(actors.strip(","))
 
-        # extract runtime
+        # extract runtime and add to tvserieslist
         tvserieslist.append(tvseries.by_class("runtime")[0].content\
             .strip(" min"))
+
+    print tvserieslist
 
     return tvserieslist
 
