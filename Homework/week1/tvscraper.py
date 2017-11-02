@@ -24,22 +24,25 @@ def extract_tvseries(dom):
     for tvseries in dom.by_tag("div.lister-item-content"):
 
         # extract title and add to tvserieslist
-        tvserieslist.append(tvseries.by_tag("a")[0].content.encode('utf-8'))
+        title = tvseries.by_tag("a")[0].content.encode('utf-8')
 
         # extract rating and add to tvserieslist
-        tvserieslist.append(tvseries.by_tag("strong")[0].content)
+        rating = tvseries.by_tag("strong")[0].content
 
         # extract genre and add to tvserieslist
-        tvserieslist.append(tvseries.by_class("genre")[0].content.strip())
+        genres = tvseries.by_class("genre")[0].content.strip()
 
         # extract actors/actresses and add to tvserieslist
         actors = ""
         for actor in tvseries.by_tag("p")[2].by_tag("a"):
             actors += ', ' + actor.content.encode('utf-8')
-        tvserieslist.append(actors.strip(","))
+        actors = actors.strip(",")
 
-        # extract runtime and add to tvserieslist
-        tvserieslist.append(tvseries.by_class("runtime")[0].content.strip(" min"))
+        # extract runtime and
+        runtime = tvseries.by_class("runtime")[0].content.strip(" min")
+
+        # add everything to tvserieslist
+        tvserieslist.append([title, rating, genres, actors, runtime])
 
     return tvserieslist
 
@@ -49,7 +52,8 @@ def save_csv(f, tvseries):
     '''
     writer = csv.writer(f)
     writer.writerow(['Title', 'Rating', 'Genre', 'Actors', 'Runtime'])
-    writer.writerow(tvseries)
+    for row in tvseries:
+        writer.writerow(row)
 
 if __name__ == '__main__':
     # Download the HTML file
