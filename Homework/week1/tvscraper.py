@@ -15,7 +15,6 @@ OUTPUT_CSV = 'tvseries.csv'
 def extract_tvseries(dom):
     '''
     Extract a list of highest rated TV series from DOM (of IMDB page).
-
     Each TV series entry contains Title, Rating, Genres, Actors and Runtime
     '''
 
@@ -40,8 +39,7 @@ def extract_tvseries(dom):
         tvserieslist.append(actors.strip(","))
 
         # extract runtime and add to tvserieslist
-        tvserieslist.append(tvseries.by_class("runtime")[0].content\
-            .strip(" min"))
+        tvserieslist.append(tvseries.by_class("runtime")[0].content.strip(" min"))
 
     return tvserieslist
 
@@ -66,7 +64,7 @@ if __name__ == '__main__':
     # Parse the HTML file into a DOM representation
     dom = DOM(html)
 
-    # Extract the tv series (using the function you implemented)
+    # Extract the tv series
     tvseries = extract_tvseries(dom)
 
     # Write the CSV file to disk (including a header)
