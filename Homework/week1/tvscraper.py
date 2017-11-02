@@ -6,10 +6,6 @@ This script scrapes IMDB and outputs a CSV file with highest rated tv series.
 '''
 import csv
 
-# import sys
-# reload(sys)
-# sys.setdefaultencoding('utf8')
-
 from pattern.web import URL, DOM
 
 TARGET_URL = "http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,desc&start=1&title_type=tv_series"
@@ -28,26 +24,13 @@ def extract_tvseries(dom):
     - Runtime (only a number!)
     '''
 
-    # NOTE: FOR THIS EXERCISE YOU ARE ALLOWED (BUT NOT REQUIRED) TO IGNORE
-    # UNICODE CHARACTERS AND SIMPLY LEAVE THEM OUT OF THE OUTPUT.
-
-    # NOTE: All unicode characters are replaced by two questionmarks.
-    # https://stackoverflow.com/questions/13093727/how-to-replace-unicode-characters-in-string-with-something-else-python
-    # https://stackoverflow.com/questions/3828723/why-should-we-not-use-sys-setdefaultencodingutf-8-in-a-py-script
-
     tvserieslist = []
 
     # iterate over highest rated TV-series
     for tvseries in dom.by_tag("div.lister-item-content"):
 
         # extract title
-        tvserieslist.append(tvseries.by_tag("a")[0].content\
-            .encode('utf-8'))
-
-        # tvserieslist.append(unicode(tvseries.by_tag("a")[0].content, "utf-8", errors="ignore"))
-
-        #tvserieslist.append(tvseries.by_tag("a")[0].content)
-
+        tvserieslist.append(tvseries.by_tag("a")[0].content.encode('utf-8'))
 
         # extract rating
         tvserieslist.append(tvseries.by_tag("strong")[0].content)
@@ -56,17 +39,14 @@ def extract_tvseries(dom):
         tvserieslist.append(tvseries.by_class("genre")[0].content.strip())
 
         # extract actors/actresses
-        # actors = ""
-        # for actor in tvseries.by_tag("p")[2].by_tag("a"):
-        #     actors += ', ' + actor.content\
-        #         .decode('unicode_escape').encode('ascii','replace')
-        # tvserieslist.append(actors.strip(","))
+        actors = ""
+        for actor in tvseries.by_tag("p")[2].by_tag("a"):
+            actors += ', ' + actor.content.encode('utf-8')
+        tvserieslist.append(actors.strip(","))
 
         # extract runtime
         tvserieslist.append(tvseries.by_class("runtime")[0].content\
             .strip(" min"))
-
-    print tvserieslist
 
     return tvserieslist
 
