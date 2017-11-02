@@ -43,8 +43,6 @@ def extract_tvseries(dom):
         tvserieslist.append(tvseries.by_class("runtime")[0].content\
             .strip(" min"))
 
-    print tvserieslist
-
     return tvserieslist
 
 def save_csv(f, tvseries):
