@@ -16,12 +16,7 @@ def extract_tvseries(dom):
     '''
     Extract a list of highest rated TV series from DOM (of IMDB page).
 
-    Each TV series entry should contain the following fields:
-    - TV Title
-    - Rating
-    - Genres (comma separated if more than one)
-    - Actors/actresses (comma separated if more than one)
-    - Runtime (only a number!)
+    Each TV series entry contains Title, Rating, Genres, Actors and Runtime 
     '''
 
     tvserieslist = []
