@@ -372,13 +372,21 @@
     </textarea>
     <script>
       data = document.getElementById("rawdata").value.split("\n")
+      // create array with data points ([[x1,y1],[x2,y2],...[xn,yn]])
       data_points = []
-      for (i = 1; i < data.length; i++){
-        point = data[i].split(" ")
+      for (i = 1; i < data.length - 1; i++){
+        point = data[i].split(",")
+        point[0] = point[0].trim()
+        point[0] = point[0].substr(0,4) + " " + point[0].substr(4,2) + " " +
+          point[0].substr(6,2)
+        point[0] = new Date(point[0])
+        point[1] = Number(point[1])
         data_points.push(point)
       }
 
       console.log(data_points)
+
+
 
     </script>
   </body>
