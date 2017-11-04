@@ -370,7 +370,7 @@
       20161230,-11
       20161231,18
     </textarea>
-    <canvas id="myCanvas" width="1400" height="800"></canvas>
+    <canvas id="myCanvas" width="1600" height="900"></canvas>
 
     <script>
       // Etmaalgemiddelde temperatuur (in 0.1 graden Celsius) per dag in 2016
@@ -380,6 +380,7 @@
       // create arrays with temperatures and dates
       temperatures = []
       dates = []
+      months = []
       min_temp = max_temp = 0
       num_days_2016 = 366
 
@@ -388,6 +389,10 @@
         row = data[i].split(",")
         date = row[0].trim()
         dates.push(date.substr(6,2) + "-" + date.substr(4,2) + "-" + date.substr(0,4))
+
+        if (Number(date.substr(6,2)) == 1){
+          months.push(i)
+        }
 
         // determine min_temp and max_temp
         temperature = Number(row[1])
@@ -400,6 +405,8 @@
 
         temperatures.push(temperature)
       }
+
+      console.log(months)
 
       domain = [1, num_days_2016]
       range = [min_temp, max_temp]
@@ -428,8 +435,8 @@
       }
 
       // scale data_points
-      marge_west = 20
-      marge_south = 20
+      marge_west = 50
+      marge_south = 50
       canvas_width = document.getElementById("myCanvas").width
       canvas_height = document.getElementById("myCanvas").height
       f_x = createTransform([1, num_days_2016], [marge_west, canvas_width])
@@ -449,19 +456,28 @@
       // ctx.strokeText('temperature (celsius)', canvas_width / 4, canvas_height);
 
       // plotting the graph
+      ctx.strokeStyle = 'blue';
       for (i = 1; i < num_days_2016 + 1; i++){
-        ctx.strokeStyle = 'blue';
         ctx.beginPath();
         ctx.moveTo(f_x(i), f_y(temperatures[i]));
         ctx.lineTo(f_x(i + 1), f_y(temperatures[i + 1]));
         ctx.stroke();
+      }
+      // reset line color
+      ctx.strokeStyle = 'black';
 
-        // streepjes bij x-as
-        ctx.strokeStyle = 'black';
+      month_names = ['January', 'Februari', 'March', 'April', 'May', 'June',
+       'July', 'August', 'September', 'October', 'November', 'December']
+
+      // streepjes bij x-as
+      for (i = 0; i < months.length; i++){
         ctx.beginPath();
-        ctx.moveTo(f_x(i), f_y(min_temp));
-        ctx.lineTo(f_x(i), f_y(min_temp - 2));
+        ctx.moveTo(f_x(months[i]), f_y(min_temp));
+        ctx.lineTo(f_x(months[i]), f_y(min_temp - 2));
         ctx.stroke();
+
+        ctx.font = '14px Times New Roman';
+        ctx.strokeText(month_names[i], f_x(months[i]) + 10, canvas_height - 30);
       }
 
       // streepjes bij y-as
@@ -473,8 +489,8 @@
         ctx.stroke();
 
         // getal bij streepje
-        ctx.font = '10px Times New Roman';
-        ctx.strokeText(i, 2, y);
+        ctx.font = '14px Times New Roman';
+        ctx.strokeText(i, marge_west - 30, y);
       }
 
       // x_axis
