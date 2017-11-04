@@ -377,7 +377,6 @@
       // 2016 was a leap year
       data = document.getElementById("rawdata").value.split("\n")
 
-      // create arrays with temperatures and dates
       temperatures = []
       dates = []
       months = []
@@ -394,7 +393,7 @@
           months.push(i)
         }
 
-        // determine min_temp and max_temp
+        // determine minimum and maximum temperature
         temperature = Number(row[1])
         if (temperature < min_temp){
           min_temp = temperature
@@ -434,26 +433,25 @@
           }
       }
 
-      // scale data_points
-      marge_west = 50
+      marge_west = 80
       marge_south = 50
       canvas_width = document.getElementById("myCanvas").width
       canvas_height = document.getElementById("myCanvas").height
+
+      // obtain scaling formulas to adjust axes to canvas
       f_x = createTransform([1, num_days_2016], [marge_west, canvas_width])
       f_y = createTransform(range, [canvas_height - marge_south, 0])
 
+      // canvas
       var canvas = document.getElementById('myCanvas');
       var ctx = canvas.getContext('2d');
 
-      ctx.font = '28px serif';
-      ctx.strokeText('Average temperature in De Bilt (NL)', canvas_width - 450, 20);
+      ctx.font = '32px Times New Roman';
+      ctx.fillText('Average temperature in De Bilt (NL)', canvas_width - 530, 25);
+      ctx.fillText('2016', canvas_width - 200, 50);
 
-      ctx.font = '20px';
-      ctx.strokeText('date', canvas_width / 4, canvas_height);
-
-      // TODO rotate text
-      // ctx.font = '20px Times New Roman';
-      // ctx.strokeText('temperature (celsius)', canvas_width / 4, canvas_height);
+      ctx.font = '24px Times New Roman';
+      ctx.fillText('date', canvas_width / 4, canvas_height);
 
       // plotting the graph
       ctx.strokeStyle = 'blue';
@@ -463,24 +461,26 @@
         ctx.lineTo(f_x(i + 1), f_y(temperatures[i + 1]));
         ctx.stroke();
       }
+
       // reset line color
       ctx.strokeStyle = 'black';
 
-      month_names = ['January', 'Februari', 'March', 'April', 'May', 'June',
-       'July', 'August', 'September', 'October', 'November', 'December']
+      ctx.textBaseline = 'middle'
 
-      // streepjes bij x-as
+      // content and lay-out x-axis
+      ctx.font = '16px Times New Roman';
+      month_names = ['January', 'February', 'March', 'April', 'May', 'June',
+       'July', 'August', 'September', 'October', 'November', 'December']
       for (i = 0; i < months.length; i++){
         ctx.beginPath();
         ctx.moveTo(f_x(months[i]), f_y(min_temp));
         ctx.lineTo(f_x(months[i]), f_y(min_temp - 2));
         ctx.stroke();
 
-        ctx.font = '14px Times New Roman';
-        ctx.strokeText(month_names[i], f_x(months[i]) + 10, canvas_height - 30);
+        ctx.fillText(month_names[i], f_x(months[i]) + 30, canvas_height - 35);
       }
 
-      // streepjes bij y-as
+      // content and lay-out y-axis
       for (i = Math.round(min_temp / 10); i < Math.round(max_temp / 10); i++){
         y = f_y(i * 10)
         ctx.beginPath();
@@ -488,9 +488,7 @@
         ctx.lineTo(f_x(-2), y);
         ctx.stroke();
 
-        // getal bij streepje
-        ctx.font = '14px Times New Roman';
-        ctx.strokeText(i, marge_west - 30, y);
+        ctx.fillText(i, marge_west - 30, y);
       }
 
       // x_axis
@@ -500,29 +498,16 @@
       ctx.stroke();
 
       // y_axis
-      ctx.beginPath();
+      //ctx.beginPath();
       ctx.moveTo(f_x(0), f_y(min_temp));
       ctx.lineTo(f_x(0), f_y(max_temp));
       ctx.stroke();
 
-      // vriespunt_axis
-      ctx.setLineDash([8, 6]);
-      ctx.lineDashOffset = 2;
-      ctx.beginPath();
-      ctx.moveTo(f_x(0), f_y(0));
-      ctx.lineTo(f_x(num_days_2016), f_y(0));
-      ctx.stroke();
-
-      // 20 graden axis
-      ctx.setLineDash([8, 6]);
-      ctx.lineDashOffset = 2;
-      ctx.beginPath();
-      ctx.moveTo(f_x(0), f_y(200));
-      ctx.lineTo(f_x(366), f_y(200));
-      ctx.stroke();
-
-
-
+      // TODO rotate text
+      //ctx.textAlign = "center";
+      ctx.font = '24px Times New Roman';
+      ctx.rotate(-Math.PI/2);
+      ctx.fillText('temperature (celsius)', - canvas_height / 2, 20);
 
     </script>
   </body>
