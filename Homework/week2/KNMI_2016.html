@@ -370,8 +370,20 @@
       20161230,-11
       20161231,18
     </textarea>
-    <canvas id="myCanvas" width="1600" height="900"></canvas>
-
+    <div id="stage">
+      <canvas id="Canvas" width="1600" height="900"></canvas>
+      <canvas id="interactive_layer" width="1600" height="900"></canvas>
+    </div>
+    <style>
+      #stage {
+        width: 1600px;
+        height: 900px;
+        position: relative;
+      }
+      canvas { position: absolute; }
+      #Canvas { z-index: 3 }
+      #interactive_layer { z-index: 2 }
+    </style>
     <script>
       // Etmaalgemiddelde temperatuur (in 0.1 graden Celsius) per dag in 2016
       // 2016 was a leap year
@@ -405,8 +417,6 @@
         temperatures.push(temperature)
       }
 
-      console.log(months)
-
       domain = [1, num_days_2016]
       range = [min_temp, max_temp]
 
@@ -434,24 +444,24 @@
       }
 
       marge_west = 80
-      marge_south = 50
-      canvas_width = document.getElementById("myCanvas").width
-      canvas_height = document.getElementById("myCanvas").height
+      marge_south = 80
+      canvas_width = document.getElementById("Canvas").width
+      canvas_height = document.getElementById("Canvas").height
 
       // obtain scaling formulas to adjust axes to canvas
       f_x = createTransform([1, num_days_2016], [marge_west, canvas_width])
       f_y = createTransform(range, [canvas_height - marge_south, 0])
 
       // canvas
-      var canvas = document.getElementById('myCanvas');
+      var canvas = document.getElementById('Canvas');
       var ctx = canvas.getContext('2d');
 
       ctx.font = '32px Times New Roman';
-      ctx.fillText('Average temperature in De Bilt (NL)', canvas_width - 530, 25);
-      ctx.fillText('2016', canvas_width - 200, 50);
+      ctx.fillText('Average temperature in De Bilt (NL)', canvas_width - 500, 25);
+      ctx.fillText('2016', canvas_width - 120, 60);
 
       ctx.font = '24px Times New Roman';
-      ctx.fillText('date', canvas_width / 4, canvas_height);
+      ctx.fillText('time (in days)', canvas_width / 4, canvas_height - 10);
 
       // plotting the graph
       ctx.strokeStyle = 'blue';
@@ -467,23 +477,30 @@
 
       ctx.textBaseline = 'middle'
 
-      // content and lay-out x-axis
-      ctx.font = '16px Times New Roman';
-      month_names = ['January', 'February', 'March', 'April', 'May', 'June',
-       'July', 'August', 'September', 'October', 'November', 'December']
+      // lay-out x-axis
       for (i = 0; i < months.length; i++){
-        ctx.beginPath();
         ctx.moveTo(f_x(months[i]), f_y(min_temp));
         ctx.lineTo(f_x(months[i]), f_y(min_temp - 2));
         ctx.stroke();
-
-        ctx.fillText(month_names[i], f_x(months[i]) + 30, canvas_height - 35);
       }
+
+      // names along x-axis
+      ctx.font = '16px Times New Roman';
+      month_names = ['January', 'February', 'March', 'April', 'May', 'June',
+         'July', 'August', 'September', 'October', 'November', 'December']
+      ctx.rotate(-Math.PI/4);
+      ctx.textAlign="end";
+      for (i = 0; i < months.length; i++){
+        ctx.fillText(month_names[i],  - 470 + 90 * i, 700 + 90 * i);
+      }
+
+      // reset text settings
+      ctx.rotate(Math.PI/4);
+      ctx.textAlign="start";
 
       // content and lay-out y-axis
       for (i = Math.round(min_temp / 10); i < Math.round(max_temp / 10); i++){
         y = f_y(i * 10)
-        ctx.beginPath();
         ctx.moveTo(f_x(0), y);
         ctx.lineTo(f_x(-2), y);
         ctx.stroke();
@@ -492,22 +509,90 @@
       }
 
       // x_axis
-      ctx.beginPath();
       ctx.moveTo(f_x(0), f_y(min_temp));
       ctx.lineTo(f_x(num_days_2016), f_y(min_temp));
       ctx.stroke();
 
       // y_axis
-      //ctx.beginPath();
       ctx.moveTo(f_x(0), f_y(min_temp));
       ctx.lineTo(f_x(0), f_y(max_temp));
       ctx.stroke();
 
-      // TODO rotate text
       //ctx.textAlign = "center";
       ctx.font = '24px Times New Roman';
       ctx.rotate(-Math.PI/2);
-      ctx.fillText('temperature (celsius)', - canvas_height / 2, 20);
+      ctx.fillText('temperature (in celsius)', - canvas_height / 2, 20);
+
+
+/*
+  THE SECOND CANVAS
+*/
+
+      var canvas = document.getElementById('interactive_layer');
+      var ctx2 = canvas.getContext('2d');
+
+      crosshair_x = 100
+      crosshair_y = 650
+      crosshair_size_large = 15
+      crosshair_size_small = 3
+
+      ctx2.lineWidth = 0.3;
+
+      // x_axis
+      ctx2.moveTo(f_x(0), crosshair_y);
+      ctx2.lineTo(crosshair_x - crosshair_size_large, crosshair_y);
+      ctx2.stroke();
+      ctx2.moveTo(crosshair_x + crosshair_size_large, crosshair_y);
+      ctx2.lineTo(canvas_width, crosshair_y);
+      ctx2.stroke();
+
+      // y_axis
+      ctx2.moveTo(crosshair_x, f_y(min_temp));
+      ctx2.lineTo(crosshair_x, crosshair_y + crosshair_size_large);
+      ctx2.stroke();
+      ctx2.moveTo(crosshair_x, crosshair_y - crosshair_size_large);
+      ctx2.lineTo(crosshair_x, 0);
+      ctx2.stroke();
+
+      ctx2.beginPath();
+      ctx2.ellipse(crosshair_x, crosshair_y, crosshair_size_small, crosshair_size_small, 0, 0, 2 * Math.PI);
+      ctx2.stroke();
+      ctx2.beginPath();
+      ctx2.ellipse(crosshair_x, crosshair_y, crosshair_size_large, crosshair_size_large, 0, 0, 2 * Math.PI);
+      ctx2.stroke();
+
+      f_x_inv = createTransform([marge_west, canvas_width], [1, num_days_2016])
+      day = Math.round(f_x_inv(crosshair_x))
+      ctx2.font = '16px Times New Roman';
+      ctx2.rotate(-Math.PI/2);
+      // distance of date from crosshair
+      crdist = 120
+      if (crosshair_y < crdist){
+        ctx2.fillText(dates[day - 1], - crosshair_y - crdist, crosshair_x + 15);
+      }
+      else{
+        ctx2.fillText(dates[day - 1], - crosshair_y + crdist, crosshair_x + 15);
+      }
+      // reset text angle
+      ctx2.rotate(Math.PI/2);
+
+      f_y_inv = createTransform([canvas_height - marge_south, 0], range)
+      ctx2.font = '16px Times New Roman';
+
+      // distance of temperature from crosshair
+      crdisttemp = 120
+      if (crosshair_y < crdisttemp){
+        ctx2.fillText(Number(temperatures[day - 1])/10, crosshair_x - crdisttemp, crosshair_y - 5);
+      }
+      else{
+        ctx2.fillText(Number(temperatures[day - 1])/10, crosshair_x + crdisttemp, crosshair_y - 5);
+      }
+
+      console.log(Number(temperatures[day - 1])/10)
+
+
+
+
 
     </script>
   </body>
