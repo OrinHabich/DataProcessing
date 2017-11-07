@@ -1,8 +1,12 @@
 /** KNMI_2016.js
  * Orin Habich 10689508
+ *
  * Draws a graph of the average temperature in De Bilt per day in 2016.
- * Average is over 24hrs, temperature in 0.1 degree celsius.
+ * Average is over 24 hrs, temperature in 0.1 degree celsius.
  * 2016 was a leap year ('schrikkeljaar')
+ *
+ * first part parses the data, second part draws the graph on the canvas
+ * last part adds a crosshair
  **/
 
 // get the data out of the html file
@@ -123,8 +127,8 @@ ctx.fillText('2016', canvas_width - 120, 60);
 
 // plot the graph
 ctx.strokeStyle = 'blue';
-for (i = 1; i < num_days_2016 + 1; i++){
-  draw_line(f_x(i), f_y(temperatures[i]), f_x(i + 1), f_y(temperatures[i + 1]))
+for (i = 0; i < num_days_2016; i++){
+  draw_line(f_x(i + 1), f_y(temperatures[i]), f_x(i + 2), f_y(temperatures[i + 1]))
 }
 
 /*
@@ -134,8 +138,8 @@ THE SECOND CANVAS
 var canvas = document.getElementById('interactive_layer');
 var ctx2 = canvas.getContext('2d');
 
-var x_mouse = 100
-var y_mouse = 650
+var x_mouse = 210
+var y_mouse = 397
 var crosshair_big_circle = 15
 var crosshair_small_circle = 3
 
@@ -179,11 +183,20 @@ var day = Math.round(f_x_inv(x_mouse))
 
 // add temperature along horizontal line
 ctx2.font = '16px Times New Roman';
-if (y_mouse < cr_text_y){
-  ctx2.fillText(Number(temperatures[day - 1]) / 10, x_mouse - cr_text_y, y_mouse - 5);
-}
-else{
-  ctx2.fillText(Number(temperatures[day - 1]) / 10, x_mouse + cr_text_y, y_mouse - 5);
+console.log(day)
+console.log(dates[day - 1])
+console.log(temperatures[day - 1])
+console.log(f_y(temperatures[day - 1]))
+console.log(y_mouse)
+if (f_y(temperatures[day - 1]) - crosshair_small_circle < y_mouse &&
+ f_y(temperatures[day - 1]) + crosshair_small_circle > y_mouse){
+  console.log("waar")
+  if (y_mouse < cr_text_y){
+    ctx2.fillText(temperatures[day - 1] / 10, x_mouse - cr_text_y, y_mouse - 5);
+  }
+  else{
+    ctx2.fillText(temperatures[day - 1] / 10, x_mouse + cr_text_y, y_mouse - 5);
+  }
 }
 
 // add date along vertical line
