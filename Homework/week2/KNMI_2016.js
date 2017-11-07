@@ -180,15 +180,15 @@ ctx2.stroke();
 var f_x_inv = createTransform([marge_left, canvas_width], [1, num_days_2016])
 var f_y_inv = createTransform([canvas_height - marge_bottom, 0], [min_temp, max_temp])
 
-// distance of <date> and <temperature> from crosshair
-var cr_text_x = 120
-var cr_text_y = 120
+// distance of respectively <date> and <temperature> from crosshair
+var cr_text_x = canvas_width / 16
+var cr_text_y = canvas_height / 10
 
 // obtain the day nearest to the current x-position of the mouse
 var day = Math.round(f_x_inv(x_mouse))
 
 // add temperature along horizontal line, if crosshair is near graph
-ctx2.font = '16px Times New Roman';
+ctx2.font = '18px Times New Roman';
 if (f_y(temperatures[day - 1]) - crosshair_small_circle < y_mouse &&
  f_y(temperatures[day - 1]) + crosshair_small_circle > y_mouse){
   if (y_mouse < cr_text_y){
@@ -207,3 +207,21 @@ if (y_mouse < cr_text_x){
 else{
   ctx2.fillText(dates[day - 1], - y_mouse + cr_text_x, x_mouse + 15);
 }
+
+function moved(){
+  console.log("Ja Hier ")
+}
+
+var url = "https://orinhabich.github.io/DataProcessing/Homework/week2/KNMI_2016.html";
+//var url = document.querySelector("interactive_layer");
+
+var request = new XMLHttpRequest();
+request.addEventListener("mousemove", moved);
+request.open("GET", url);
+request.send();
+
+// request.onreadystatechange = function() {
+//   console.log("ja oke dit doet het blijkbaar")
+//   if (request.status == 200 && request.readyState == 4){
+//   }
+// }
