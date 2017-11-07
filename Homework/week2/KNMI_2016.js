@@ -102,9 +102,15 @@ for (i = 0; i < months.length; i++){
 }
 
 // lay-out and content y-axis
+/*
+explanation 'magic' numbers:
+10 because temperature was measured in 0.1 degree celsius
+-1 is the size of the marks at the temperatures at the y axis
+30 is the length we take for the temperature (two digits long)
+*/
 for (i = Math.round(min_temp / 10); i < Math.round(max_temp / 10); i++){
-  y = f_y(i * 10)
-  draw_line(f_x(0), y, f_x(-2), y)
+  var y = f_y(i * 10)
+  draw_line(f_x(0), y, f_x(-1), y)
   ctx.fillText(i, marge_left - 30, y);
 }
 
@@ -181,16 +187,10 @@ var cr_text_y = 120
 // obtain the day nearest to the current x-position of the mouse
 var day = Math.round(f_x_inv(x_mouse))
 
-// add temperature along horizontal line
+// add temperature along horizontal line, if crosshair is near graph
 ctx2.font = '16px Times New Roman';
-console.log(day)
-console.log(dates[day - 1])
-console.log(temperatures[day - 1])
-console.log(f_y(temperatures[day - 1]))
-console.log(y_mouse)
 if (f_y(temperatures[day - 1]) - crosshair_small_circle < y_mouse &&
  f_y(temperatures[day - 1]) + crosshair_small_circle > y_mouse){
-  console.log("waar")
   if (y_mouse < cr_text_y){
     ctx2.fillText(temperatures[day - 1] / 10, x_mouse - cr_text_y, y_mouse - 5);
   }
