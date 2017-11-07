@@ -6,26 +6,30 @@
  **/
 
 // get the data out of the html file
-data = document.getElementById("rawdata").value.split("\n")
+var data = document.getElementById("rawdata").value.split("\n")
 
-temperatures = []
-dates = []
-months = []
-min_temp = max_temp = 0
-num_days_2016 = 366
+var temperatures = []
+var dates = []
+var months = []
+var min_temp = max_temp = 0
+var num_days_2016 = 366
 
 // iterate over days in year
 for (i = 1; i < num_days_2016 + 1; i++){
-  row = data[i].split(",")
-  date = row[0].trim()
+  // split the data into separate values
+  var row = data[i].split(",")
+  var date = row[0].trim()
+
+  // fill array dates
   dates.push(date.substr(6,2) + "-" + date.substr(4,2) + "-" + date.substr(0,4))
 
+  // fill array months
   if (Number(date.substr(6,2)) == 1){
     months.push(i)
   }
 
   // determine minimum and maximum temperature
-  temperature = Number(row[1])
+  var temperature = Number(row[1])
   if (temperature < min_temp){
     min_temp = temperature
   }
@@ -33,11 +37,9 @@ for (i = 1; i < num_days_2016 + 1; i++){
     max_temp = temperature
   }
 
+  // fill array temperatures
   temperatures.push(temperature)
 }
-
-domain = [1, num_days_2016]
-range = [min_temp, max_temp]
 
 function createTransform(domain, range){
   // domain is a two-element array of the data bounds [domain_min, domain_max]
@@ -62,14 +64,14 @@ function createTransform(domain, range){
     }
 }
 
-marge_left = 80
-marge_bottom = 80
-canvas_width = document.getElementById("Canvas").width
-canvas_height = document.getElementById("Canvas").height
+var marge_left = 80
+var marge_bottom = 80
+var canvas_width = document.getElementById("Canvas").width
+var canvas_height = document.getElementById("Canvas").height
 
 // obtain scaling formulas to adjust axes to canvas
-f_x = createTransform([1, num_days_2016], [marge_left, canvas_width])
-f_y = createTransform(range, [canvas_height - marge_bottom, 0])
+var f_x = createTransform([1, num_days_2016], [marge_left, canvas_width])
+var f_y = createTransform([min_temp, max_temp], [canvas_height - marge_bottom, 0])
 
 // canvas
 var canvas = document.getElementById('Canvas');
@@ -89,7 +91,7 @@ draw_line(f_x(0), f_y(min_temp), f_x(0), f_y(max_temp));
 
 // lay-out and content x-axis
 ctx.font = '16px Times New Roman';
-month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+var month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 for (i = 0; i < months.length; i++){
   draw_line(f_x(months[i]), f_y(min_temp), f_x(months[i]), f_y(min_temp - 2))
   ctx.fillText(month_names[i], marge_left + (canvas_width - marge_left) / month_names.length *i + 20, canvas_height - (marge_bottom - 20) );
@@ -132,61 +134,63 @@ THE SECOND CANVAS
 var canvas = document.getElementById('interactive_layer');
 var ctx2 = canvas.getContext('2d');
 
-crosshair_x = 100
-crosshair_y = 650
-crosshair_size_large = 15
-crosshair_size_small = 3
+var x_mouse = 100
+var y_mouse = 650
+var crosshair_big_circle = 15
+var crosshair_small_circle = 3
+
+function draw_line2(x_start, y_start, x_end, y_end){
+  // draws a line on the second canvas
+  ctx2.beginPath();
+  ctx2.moveTo(x_start, y_start);
+  ctx2.lineTo(x_end, y_end);
+  ctx2.stroke();
+}
 
 ctx2.lineWidth = 0.3;
 
-// x_axis
-ctx2.moveTo(f_x(0), crosshair_y);
-ctx2.lineTo(crosshair_x - crosshair_size_large, crosshair_y);
-ctx2.stroke();
-ctx2.moveTo(crosshair_x + crosshair_size_large, crosshair_y);
-ctx2.lineTo(canvas_width, crosshair_y);
-ctx2.stroke();
+// horizontal line
+draw_line2(f_x(0), y_mouse, x_mouse - crosshair_big_circle, y_mouse);
+draw_line2(x_mouse + crosshair_big_circle, y_mouse, canvas_width, y_mouse);
 
-// y_axis
-ctx2.moveTo(crosshair_x, f_y(min_temp));
-ctx2.lineTo(crosshair_x, crosshair_y + crosshair_size_large);
-ctx2.stroke();
-ctx2.moveTo(crosshair_x, crosshair_y - crosshair_size_large);
-ctx2.lineTo(crosshair_x, 0);
-ctx2.stroke();
+// vertical line
+draw_line2(x_mouse, f_y(min_temp), x_mouse, y_mouse + crosshair_big_circle);
+draw_line2(x_mouse, y_mouse - crosshair_big_circle, x_mouse, 0);
 
+// two concentric circles
 ctx2.beginPath();
-ctx2.ellipse(crosshair_x, crosshair_y, crosshair_size_small, crosshair_size_small, 0, 0, 2 * Math.PI);
+ctx2.ellipse(x_mouse, y_mouse, crosshair_small_circle, crosshair_small_circle, 0, 0, 2 * Math.PI);
 ctx2.stroke();
 ctx2.beginPath();
-ctx2.ellipse(crosshair_x, crosshair_y, crosshair_size_large, crosshair_size_large, 0, 0, 2 * Math.PI);
+ctx2.ellipse(x_mouse, y_mouse, crosshair_big_circle, crosshair_big_circle, 0, 0, 2 * Math.PI);
 ctx2.stroke();
 
-f_x_inv = createTransform([marge_left, canvas_width], [1, num_days_2016])
-day = Math.round(f_x_inv(crosshair_x))
+// get inverse of f_x to go from coordinates on canvas to coordinates in graph
+// note: the coordinates of the mouse will probably become something else? so a TODO here
+var f_x_inv = createTransform([marge_left, canvas_width], [1, num_days_2016])
+var f_y_inv = createTransform([canvas_height - marge_bottom, 0], [min_temp, max_temp])
+
+// distance of <date> and <temperature> from crosshair
+var cr_text_x = 120
+var cr_text_y = 120
+
+// obtain the day nearest to the current x-position of the mouse
+var day = Math.round(f_x_inv(x_mouse))
+
+// add temperature along horizontal line
 ctx2.font = '16px Times New Roman';
+if (y_mouse < cr_text_y){
+  ctx2.fillText(Number(temperatures[day - 1]) / 10, x_mouse - cr_text_y, y_mouse - 5);
+}
+else{
+  ctx2.fillText(Number(temperatures[day - 1]) / 10, x_mouse + cr_text_y, y_mouse - 5);
+}
+
+// add date along vertical line
 ctx2.rotate(-Math.PI/2);
-// distance of date from crosshair
-crdist = 120
-if (crosshair_y < crdist){
-  ctx2.fillText(dates[day - 1], - crosshair_y - crdist, crosshair_x + 15);
+if (y_mouse < cr_text_x){
+  ctx2.fillText(dates[day - 1], - y_mouse - cr_text_x, x_mouse + 15);
 }
 else{
-  ctx2.fillText(dates[day - 1], - crosshair_y + crdist, crosshair_x + 15);
+  ctx2.fillText(dates[day - 1], - y_mouse + cr_text_x, x_mouse + 15);
 }
-// reset text angle
-ctx2.rotate(Math.PI/2);
-
-f_y_inv = createTransform([canvas_height - marge_bottom, 0], range)
-ctx2.font = '16px Times New Roman';
-
-// distance of temperature from crosshair
-crdisttemp = 120
-if (crosshair_y < crdisttemp){
-  ctx2.fillText(Number(temperatures[day - 1])/10, crosshair_x - crdisttemp, crosshair_y - 5);
-}
-else{
-  ctx2.fillText(Number(temperatures[day - 1])/10, crosshair_x + crdisttemp, crosshair_y - 5);
-}
-
-console.log(Number(temperatures[day - 1])/10)
