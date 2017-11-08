@@ -13,7 +13,7 @@
  * which have fixed sizes anyway.
  **/
 
-var url = "KNMI_2016.csv";
+var url = "Homework/week2/KNMI_2016.csv";
 
  var request = new XMLHttpRequest();
  request.onreadystatechange = function() {
