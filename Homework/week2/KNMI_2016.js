@@ -13,7 +13,8 @@
  * which have fixed sizes anyway.
  **/
 
-var url = "Homework/week2/KNMI_2016.csv";
+var url = "https://orinhabich.github.io/DataProcessing/Homework/week2/KNMI_2016.csv"; //Homework/week2/
+
 
  var request = new XMLHttpRequest();
  request.onreadystatechange = function() {
