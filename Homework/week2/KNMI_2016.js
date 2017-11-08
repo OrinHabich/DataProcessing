@@ -64,14 +64,14 @@ function make_graph(data){
     temperatures.push(temperature);
   }
 
-  var marge_left = 80;
-  var marge_bottom = 80;
+  var padding_left = 80;
+  var padding_bottom = 80;
   var canvas_width = document.getElementById("Canvas").width;
   var canvas_height = document.getElementById("Canvas").height;
 
   // obtain scaling formulas to adjust axes to canvas
-  var f_x = createTransform(1, num_days_2016, marge_left, canvas_width);
-  var f_y = createTransform(min_temp, max_temp, canvas_height - marge_bottom, 0);
+  var f_x = createTransform(1, num_days_2016, padding_left, canvas_width);
+  var f_y = createTransform(min_temp, max_temp, canvas_height - padding_bottom, 0);
 
   // canvas
   var canvas = document.getElementById('Canvas');
@@ -95,8 +95,8 @@ function make_graph(data){
       'July', 'August', 'September', 'October', 'November', 'December']
   for (i = 0; i < months.length; i++){
     draw_line(f_x(months[i]), f_y(min_temp), f_x(months[i]), f_y(min_temp - 2));
-    ctx.fillText(month_names[i], marge_left + (canvas_width - marge_left) /
-        month_names.length *i + 20, canvas_height - (marge_bottom - 20) );
+    ctx.fillText(month_names[i], padding_left + (canvas_width - padding_left) /
+        month_names.length *i + 20, canvas_height - (padding_bottom - 20) );
   }
 
   // lay-out and content y-axis
@@ -106,7 +106,7 @@ function make_graph(data){
       i < Math.round(max_temp * temp_precision) + 1; i++){
     var y = f_y(i / temp_precision)
     draw_line(f_x(0), y, f_x(-1), y);
-    ctx.fillText(i, marge_left - 30, y);
+    ctx.fillText(i, padding_left - 30, y);
   }
 
   // add label x-axis
@@ -210,8 +210,8 @@ canvas { position: absolute; }
 //
 // // get inverse of f_x to go from coordinates on canvas to coordinates in graph
 // // note: the coordinates of the mouse will probably become something else? so a TODO here
-// var f_x_inv = createTransform([marge_left, canvas_width], [1, num_days_2016])
-// var f_y_inv = createTransform([canvas_height - marge_bottom, 0], [min_temp, max_temp])
+// var f_x_inv = createTransform([padding_left, canvas_width], [1, num_days_2016])
+// var f_y_inv = createTransform([canvas_height - padding_bottom, 0], [min_temp, max_temp])
 //
 // // distance of respectively <date> and <temperature> from crosshair
 // var cr_text_x = canvas_width / 16
