@@ -2,6 +2,7 @@
  * Orin Habich 10689508
  *
  * Draws a graph of the average temperature in De Bilt per day in 2016.
+ * data comes from http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi
  * Average is over 24 hrs, temperature in 0.1 degree celsius.
  * 2016 was a leap year ('schrikkeljaar')
  *
@@ -131,6 +132,10 @@ function make_graph(data){
   ctx.font = '32px Times New Roman';
   ctx.fillText('Average temperature in De Bilt (NL)', canvas_width - 500, 25);
   ctx.fillText('2016', canvas_width - 120, 60);
+
+  // add name
+  ctx.font = '12px Times New Roman';
+  ctx.fillText('by Orin Habich 10689508', canvas_width - 140, canvas_height - 20);
 
   // plot the graph
   ctx.strokeStyle = 'blue';
