@@ -72,8 +72,8 @@ function make_graph(data){
   var canvas_height = document.getElementById("Canvas").height;
 
   // obtain scaling formulas to adjust axes to canvas
-  transform_x = createTransform(1, num_days_2016, padding_left, canvas_width);
-  transform_y = createTransform(min_temp, max_temp,
+  transform_x = create_transform(1, num_days_2016, padding_left, canvas_width);
+  transform_y = create_transform(min_temp, max_temp,
     canvas_height - padding_bottom, 0);
 
   // canvas
@@ -140,7 +140,7 @@ function make_graph(data){
   }
 }
 
-function createTransform(data_min, data_max, canvas_graph_min, canvas_graph_max){
+function create_transform(data_min, data_max, canvas_graph_min, canvas_graph_max){
 /*  returns a linear function (x_screen = alpha * x_data + beta) to scale the
     domain or range of the data to an appropriate size for the canvas
 */
