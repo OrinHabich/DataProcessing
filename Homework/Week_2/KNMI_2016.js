@@ -14,7 +14,7 @@
  **/
 
 var url =
-  "https://orinhabich.github.io/DataProcessing/Homework/week2/KNMI_2016.csv";
+  "https://orinhabich.github.io/DataProcessing/Homework/Week_2/KNMI_2016.csv";
 
 var request = new XMLHttpRequest();
 request.onreadystatechange = function() {
