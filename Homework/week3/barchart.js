@@ -7,10 +7,11 @@
 // Links to used sources:
 // https://bost.ocks.org/mike/bar/
 // http://bl.ocks.org/Caged/6476579
+// d3js.org/d3.v3.min.js
 
 var margin = {top: 10, right: 30, bottom: 30, left: 70},
   width = 1600 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 800 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
   .rangeRoundBands([0, width], .1);
@@ -69,7 +70,7 @@ chart.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(xAxis)
   .append("text")
-  .attr("x", width)
+  .attr("x", width / 2)
   .attr("dy", "1.9em")
   .style("text-anchor", "end")
   .text("Month");
