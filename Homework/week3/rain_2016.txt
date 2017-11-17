@@ -1,0 +1,13 @@
+Deze gegevens mogen vrij worden gebruikt mits de volgende bronvermelding wordt gegeven:
+KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+
+These data can be used freely provided that the following source is acknowledged:
+ROYAL NETHERLANDS METEOROLOGICAL INSTITUTE
+
+MAAND en JAARSOMMEN VAN DE NEERSLAG 0 - 24 UTC (0.1 millimeter)
+MONTHLY AND YEARLY AMOUNT OF PRECIPITATION 0 - 24 UTC (0.1 millimeter)
+
+STN = stationsnummer / WMO-number = 06... (235=De Kooy,240=Schiphol,260=De Bilt,270=Leeuwarden,280=Eelde,
+      290=Twenthe,310=Vlissingen,344=Rotterdam,370=Eindhoven,380=Maastricht)
+
+1164,   821,   551,   826,   459,  1547,   730,   716,   176,   473,   746,   171,  8380
