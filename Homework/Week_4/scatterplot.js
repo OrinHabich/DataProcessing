@@ -1,26 +1,28 @@
-// scatterplot.js
-// Minor programmeren; DataProcessing; D3 Scatterplot
-// Orin Habich 10689508
-//
-// Here D3 is used to implement a scatterplot.
-//
-// Links to used sources:
-// d3js.org/d3.v3.min.js
+/*  scatterplot.js
+    Minor programmeren; DataProcessing; D3 Scatterplot
+    Orin Habich 10689508
+
+    Here D3 is used to implement a scatterplot.
+
+    Links to used sources:
+    d3js.org/d3.v3.min.js
+    https://bl.ocks.org/mbostock/3887118
+*/
 
 var margin = {top: 20, right: 20, bottom: 30, left: 80},
     width = 1600 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
 // setup x
-var xValue = function(d) { return d.age;}, // data -> value
-  xScale = d3.scale.linear().range([0, width - 50]), // value -> display
-  xMap = function(d) { return xScale(xValue(d));}, // data -> display
+var xValue = function(d) { return d.age;},
+  xScale = d3.scale.linear().range([0, width - 50]),
+  xMap = function(d) { return xScale(xValue(d));},
   xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 // setup y
-var yValue = function(d) { return d.gnp;}, // data -> value
-  yScale = d3.scale.linear().range([height, 0]), // value -> display
-  yMap = function(d) { return yScale(yValue(d));}, // data -> display
+var yValue = function(d) { return d.gnp;},
+  yScale = d3.scale.linear().range([height, 0]),
+  yMap = function(d) { return yScale(yValue(d));},
   yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 // setup fill color
