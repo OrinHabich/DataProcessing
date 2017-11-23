@@ -102,8 +102,8 @@
 // });
 
 var margin = {top: 20, right: 20, bottom: 30, left: 80},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 1600 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 /*
  * value accessor - returns the value to encode for a given data object.
@@ -159,7 +159,6 @@ d3.csv("motherhood.csv", function(error, data) {
   svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
-    //.style({"stroke": "black", "fill": "none", "stroke-width": "1px"})
     .call(xAxis)
     .append("text")
     .attr("class", "label")
