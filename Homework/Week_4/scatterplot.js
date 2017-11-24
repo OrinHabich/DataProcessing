@@ -7,11 +7,12 @@
     Links to used sources:
     d3js.org/d3.v3.min.js
     https://bl.ocks.org/mbostock/3887118
+    https://stackoverflow.com/questions/30711843/change-size-of-bubble-in-scatter-plot-for-c3-js
 */
 
 var margin = {top: 20, right: 20, bottom: 30, left: 80},
-    width = 1600 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+  width = 1600 - margin.left - margin.right,
+  height = 700 - margin.top - margin.bottom;
 
 // setup x
 var xValue = function(d) { return d.age;},
@@ -20,14 +21,18 @@ var xValue = function(d) { return d.age;},
   xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 // setup y
-var yValue = function(d) { return d.gnp;},
+var yValue = function(d) { return d.gni;},
   yScale = d3.scale.linear().range([height, 0]),
   yMap = function(d) { return yScale(yValue(d));},
   yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+// setup r
+var rValue = function(d) { return d.population;},
+  rScale = d3.scale.linear().range([15, height]);
+
 // setup fill color
 var cValue = function(d) { return d.country;},
-    color = d3.scale.category10();
+  color = d3.scale.category10();
 
 // add the graph canvas to the body of the webpage
 var svg = d3.select("body").append("svg")
@@ -36,11 +41,10 @@ var svg = d3.select("body").append("svg")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 // add the tooltip area to the webpage
 var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+  .attr("class", "tooltip")
+  .style("opacity", 0);
 
 // load data
 d3.csv("motherhood.csv", function(error, data) {
@@ -48,13 +52,14 @@ d3.csv("motherhood.csv", function(error, data) {
   // change string (from CSV) into number format
   data.forEach(function(d) {
     d.age = +d.age;
-    d.gnp = +d.gnp;
-    console.log(d);
+    d.gni = +d.gni;
+    d.population = +d.population
   });
 
   // don't want dots overlapping axis, so add in buffer to data domain
-  xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
-  yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
+  xScale.domain([d3.min(data, xValue) - 1, d3.max(data, xValue) + 1]);
+  yScale.domain([d3.min(data, yValue) - 1, d3.max(data, yValue) + 1]);
+  rScale.domain([d3.min(data, rValue), d3.max(data, rValue)]);
 
   // x-axis
   svg.append("g")
@@ -66,7 +71,7 @@ d3.csv("motherhood.csv", function(error, data) {
     .attr("x", width)
     .attr("y", -6)
     .style("text-anchor", "end")
-    .text("Mean age");
+    .text("Mean age (years)");
 
   // y-axis
   svg.append("g")
@@ -78,7 +83,7 @@ d3.csv("motherhood.csv", function(error, data) {
     .attr("y", 6)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
-    .text("Gross national product");
+    .text("Gross national income (dollars/capita)");
 
   // draw dots
   svg.selectAll(".dot")
@@ -86,24 +91,24 @@ d3.csv("motherhood.csv", function(error, data) {
     .enter()
     .append("circle")
     .attr("class", "dot")
-    .attr("r", 5)
+    .attr("r", function(d) { return Math.sqrt(rScale(d.population))})
     .attr("cx", xMap)
     .attr("cy", yMap)
     .style("fill", function(d) { return color(cValue(d));})
     .on("mouseover", function(d) {
-              tooltip.transition()
-                   .duration(200)
-                   .style("opacity", .9);
-              tooltip.html(d.country + "<br/> (" + xValue(d)
-    	        + ", " + yValue(d) + ")")
-                   .style("left", (d3.event.pageX + 5) + "px")
-                   .style("top", (d3.event.pageY - 28) + "px");
-          })
-          .on("mouseout", function(d) {
-              tooltip.transition()
-                   .duration(500)
-                   .style("opacity", 0);
-          });
+      tooltip.transition()
+       .duration(200)
+       .style("opacity", .9);
+      tooltip.html(d.country + "<br/> (" + xValue(d) + " year, " + rValue(d)
+        + " inhabitants, " + yValue(d) + "$)")
+       .style("left", (d3.event.pageX + 5) + "px")
+       .style("top", (d3.event.pageY - 28) + "px");
+      })
+    .on("mouseout", function(d) {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+      });
 
   // draw legend
   var legend = svg.selectAll(".legend")
@@ -111,7 +116,7 @@ d3.csv("motherhood.csv", function(error, data) {
     .enter()
     .append("g")
     .attr("class", "legend")
-    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")";});
 
   // draw legend colored rectangles
   legend.append("rect")
