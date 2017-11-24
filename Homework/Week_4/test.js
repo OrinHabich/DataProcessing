@@ -11,6 +11,7 @@ d3.xml("test.svg", "image/svg+xml", function(error, xml) {
     console.log(svg)
     var colors = ["#ccece6","#99d8c9","#66c2a4","#41ae76","#238b45","#005824", "#D3D3D3"];
 
+
     svg.selectAll(".st1")
       .data(colors)
       .enter()
@@ -22,5 +23,26 @@ d3.xml("test.svg", "image/svg+xml", function(error, xml) {
       .attr("x", "13")
       .attr("y", function(d, i) { return i * 38 + 24});
 
+    svg.selectAll(".st1")
+      .style("fill", function(d, i) { return colors[i]})
+
+
+    svg.selectAll(".st2")
+      .data(colors)
+      .enter()
+      .append("rect")
+      .attr("id", function(d, i) { return "tekst" + (i + 1)})
+      .attr("height", "29")
+      .attr("width", "119.1")
+      .attr("x", "46.5")
+      .attr("y", function(d, i) { return i * 38 + 24});
+
+    svg.selectAll(".st2")
+      .data(colors)
+      bar.append("text")
+      .attr("x", "46.5")
+      .attr("y", function(d, i) { return i * 38 + 24});
+    .attr("dy", ".35em")
+    .text(function(d) { return d; });
 
 });
