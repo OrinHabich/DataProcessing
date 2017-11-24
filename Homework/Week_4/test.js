@@ -10,7 +10,7 @@ d3.xml("test.svg", "image/svg+xml", function(error, xml) {
     var svg = d3.select("#Laag_1")
     console.log(svg)
     var colors = ["#ccece6","#99d8c9","#66c2a4","#41ae76","#238b45","#005824", "#D3D3D3"];
-
+    var data = ["100", "1000", "10000", "100000", "10000000", "10000000", "Unknown data"]
 
     svg.selectAll(".st1")
       .data(colors)
@@ -32,17 +32,19 @@ d3.xml("test.svg", "image/svg+xml", function(error, xml) {
       .enter()
       .append("rect")
       .attr("id", function(d, i) { return "tekst" + (i + 1)})
+      .style("fill", "lightgrey")
       .attr("height", "29")
       .attr("width", "119.1")
       .attr("x", "46.5")
       .attr("y", function(d, i) { return i * 38 + 24});
 
     svg.selectAll(".st2")
-      .data(colors)
-      bar.append("text")
-      .attr("x", "46.5")
-      .attr("y", function(d, i) { return i * 38 + 24});
-    .attr("dy", ".35em")
-    .text(function(d) { return d; });
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("x", "50")
+      .attr("y", function(d, i) { return i * 38 + 24})
+    .attr("dy", "1em")
+    .text(function(d, i) { return data[i]; });
 
 });
