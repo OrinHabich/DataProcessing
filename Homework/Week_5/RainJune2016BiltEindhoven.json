@@ -1,0 +1,486 @@
+[
+ [
+  {
+   "day": "01", 
+   "temperatures": {
+    "average": 192, 
+    "maximum": 243, 
+    "minimum": 154
+   }
+  }, 
+  {
+   "day": "02", 
+   "temperatures": {
+    "average": 153, 
+    "maximum": 172, 
+    "minimum": 137
+   }
+  }, 
+  {
+   "day": "03", 
+   "temperatures": {
+    "average": 164, 
+    "maximum": 214, 
+    "minimum": 137
+   }
+  }, 
+  {
+   "day": "04", 
+   "temperatures": {
+    "average": 201, 
+    "maximum": 275, 
+    "minimum": 141
+   }
+  }, 
+  {
+   "day": "05", 
+   "temperatures": {
+    "average": 200, 
+    "maximum": 256, 
+    "minimum": 137
+   }
+  }, 
+  {
+   "day": "06", 
+   "temperatures": {
+    "average": 189, 
+    "maximum": 256, 
+    "minimum": 117
+   }
+  }, 
+  {
+   "day": "07", 
+   "temperatures": {
+    "average": 201, 
+    "maximum": 265, 
+    "minimum": 153
+   }
+  }, 
+  {
+   "day": "08", 
+   "temperatures": {
+    "average": 161, 
+    "maximum": 216, 
+    "minimum": 127
+   }
+  }, 
+  {
+   "day": "09", 
+   "temperatures": {
+    "average": 153, 
+    "maximum": 203, 
+    "minimum": 110
+   }
+  }, 
+  {
+   "day": "10", 
+   "temperatures": {
+    "average": 164, 
+    "maximum": 212, 
+    "minimum": 108
+   }
+  }, 
+  {
+   "day": "11", 
+   "temperatures": {
+    "average": 162, 
+    "maximum": 208, 
+    "minimum": 120
+   }
+  }, 
+  {
+   "day": "12", 
+   "temperatures": {
+    "average": 166, 
+    "maximum": 211, 
+    "minimum": 135
+   }
+  }, 
+  {
+   "day": "13", 
+   "temperatures": {
+    "average": 159, 
+    "maximum": 190, 
+    "minimum": 146
+   }
+  }, 
+  {
+   "day": "14", 
+   "temperatures": {
+    "average": 152, 
+    "maximum": 191, 
+    "minimum": 111
+   }
+  }, 
+  {
+   "day": "15", 
+   "temperatures": {
+    "average": 146, 
+    "maximum": 187, 
+    "minimum": 113
+   }
+  }, 
+  {
+   "day": "16", 
+   "temperatures": {
+    "average": 157, 
+    "maximum": 211, 
+    "minimum": 92
+   }
+  }, 
+  {
+   "day": "17", 
+   "temperatures": {
+    "average": 151, 
+    "maximum": 195, 
+    "minimum": 111
+   }
+  }, 
+  {
+   "day": "18", 
+   "temperatures": {
+    "average": 141, 
+    "maximum": 171, 
+    "minimum": 99
+   }
+  }, 
+  {
+   "day": "19", 
+   "temperatures": {
+    "average": 153, 
+    "maximum": 189, 
+    "minimum": 121
+   }
+  }, 
+  {
+   "day": "20", 
+   "temperatures": {
+    "average": 155, 
+    "maximum": 168, 
+    "minimum": 141
+   }
+  }, 
+  {
+   "day": "21", 
+   "temperatures": {
+    "average": 170, 
+    "maximum": 201, 
+    "minimum": 134
+   }
+  }, 
+  {
+   "day": "22", 
+   "temperatures": {
+    "average": 201, 
+    "maximum": 249, 
+    "minimum": 147
+   }
+  }, 
+  {
+   "day": "23", 
+   "temperatures": {
+    "average": 220, 
+    "maximum": 284, 
+    "minimum": 182
+   }
+  }, 
+  {
+   "day": "24", 
+   "temperatures": {
+    "average": 192, 
+    "maximum": 227, 
+    "minimum": 133
+   }
+  }, 
+  {
+   "day": "25", 
+   "temperatures": {
+    "average": 154, 
+    "maximum": 193, 
+    "minimum": 109
+   }
+  }, 
+  {
+   "day": "26", 
+   "temperatures": {
+    "average": 149, 
+    "maximum": 183, 
+    "minimum": 121
+   }
+  }, 
+  {
+   "day": "27", 
+   "temperatures": {
+    "average": 149, 
+    "maximum": 189, 
+    "minimum": 109
+   }
+  }, 
+  {
+   "day": "28", 
+   "temperatures": {
+    "average": 167, 
+    "maximum": 218, 
+    "minimum": 92
+   }
+  }, 
+  {
+   "day": "29", 
+   "temperatures": {
+    "average": 160, 
+    "maximum": 202, 
+    "minimum": 132
+   }
+  }, 
+  {
+   "day": "30", 
+   "temperatures": {
+    "average": 164, 
+    "maximum": 192, 
+    "minimum": 144
+   }
+  }
+ ], 
+ [
+  {
+   "day": "01", 
+   "temperatures": {
+    "average": 173, 
+    "maximum": 215, 
+    "minimum": 120
+   }
+  }, 
+  {
+   "day": "02", 
+   "temperatures": {
+    "average": 171, 
+    "maximum": 219, 
+    "minimum": 142
+   }
+  }, 
+  {
+   "day": "03", 
+   "temperatures": {
+    "average": 170, 
+    "maximum": 215, 
+    "minimum": 139
+   }
+  }, 
+  {
+   "day": "04", 
+   "temperatures": {
+    "average": 178, 
+    "maximum": 248, 
+    "minimum": 137
+   }
+  }, 
+  {
+   "day": "05", 
+   "temperatures": {
+    "average": 206, 
+    "maximum": 283, 
+    "minimum": 128
+   }
+  }, 
+  {
+   "day": "06", 
+   "temperatures": {
+    "average": 207, 
+    "maximum": 270, 
+    "minimum": 133
+   }
+  }, 
+  {
+   "day": "07", 
+   "temperatures": {
+    "average": 207, 
+    "maximum": 276, 
+    "minimum": 150
+   }
+  }, 
+  {
+   "day": "08", 
+   "temperatures": {
+    "average": 180, 
+    "maximum": 232, 
+    "minimum": 119
+   }
+  }, 
+  {
+   "day": "09", 
+   "temperatures": {
+    "average": 162, 
+    "maximum": 218, 
+    "minimum": 101
+   }
+  }, 
+  {
+   "day": "10", 
+   "temperatures": {
+    "average": 169, 
+    "maximum": 230, 
+    "minimum": 85
+   }
+  }, 
+  {
+   "day": "11", 
+   "temperatures": {
+    "average": 182, 
+    "maximum": 219, 
+    "minimum": 146
+   }
+  }, 
+  {
+   "day": "12", 
+   "temperatures": {
+    "average": 172, 
+    "maximum": 228, 
+    "minimum": 151
+   }
+  }, 
+  {
+   "day": "13", 
+   "temperatures": {
+    "average": 154, 
+    "maximum": 204, 
+    "minimum": 138
+   }
+  }, 
+  {
+   "day": "14", 
+   "temperatures": {
+    "average": 158, 
+    "maximum": 212, 
+    "minimum": 124
+   }
+  }, 
+  {
+   "day": "15", 
+   "temperatures": {
+    "average": 148, 
+    "maximum": 196, 
+    "minimum": 105
+   }
+  }, 
+  {
+   "day": "16", 
+   "temperatures": {
+    "average": 151, 
+    "maximum": 214, 
+    "minimum": 84
+   }
+  }, 
+  {
+   "day": "17", 
+   "temperatures": {
+    "average": 156, 
+    "maximum": 204, 
+    "minimum": 129
+   }
+  }, 
+  {
+   "day": "18", 
+   "temperatures": {
+    "average": 145, 
+    "maximum": 181, 
+    "minimum": 122
+   }
+  }, 
+  {
+   "day": "19", 
+   "temperatures": {
+    "average": 150, 
+    "maximum": 192, 
+    "minimum": 113
+   }
+  }, 
+  {
+   "day": "20", 
+   "temperatures": {
+    "average": 158, 
+    "maximum": 189, 
+    "minimum": 131
+   }
+  }, 
+  {
+   "day": "21", 
+   "temperatures": {
+    "average": 175, 
+    "maximum": 208, 
+    "minimum": 150
+   }
+  }, 
+  {
+   "day": "22", 
+   "temperatures": {
+    "average": 213, 
+    "maximum": 263, 
+    "minimum": 143
+   }
+  }, 
+  {
+   "day": "23", 
+   "temperatures": {
+    "average": 246, 
+    "maximum": 317, 
+    "minimum": 193
+   }
+  }, 
+  {
+   "day": "24", 
+   "temperatures": {
+    "average": 203, 
+    "maximum": 238, 
+    "minimum": 156
+   }
+  }, 
+  {
+   "day": "25", 
+   "temperatures": {
+    "average": 154, 
+    "maximum": 185, 
+    "minimum": 105
+   }
+  }, 
+  {
+   "day": "26", 
+   "temperatures": {
+    "average": 144, 
+    "maximum": 196, 
+    "minimum": 102
+   }
+  }, 
+  {
+   "day": "27", 
+   "temperatures": {
+    "average": 150, 
+    "maximum": 187, 
+    "minimum": 123
+   }
+  }, 
+  {
+   "day": "28", 
+   "temperatures": {
+    "average": 178, 
+    "maximum": 230, 
+    "minimum": 131
+   }
+  }, 
+  {
+   "day": "29", 
+   "temperatures": {
+    "average": 166, 
+    "maximum": 220, 
+    "minimum": 134
+   }
+  }, 
+  {
+   "day": "30", 
+   "temperatures": {
+    "average": 169, 
+    "maximum": 201, 
+    "minimum": 145
+   }
+  }
+ ]
+]
