@@ -16,60 +16,60 @@ Make sure that you properly label the axes,
    something that is fairly simple using d3.time.format function.
 */
 
-// Set the dimensions of the canvas / graph
-var	margin = {top: 30, right: 20, bottom: 30, left: 50},
-	width = 600 - margin.left - margin.right,
-	height = 270 - margin.top - margin.bottom;
+// https://bl.ocks.org/mbostock/3883245
 
-// Parse the date / time
-var	parseDate = d3.time.format("%d-%b-%y").parse;
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// Set the ranges
-var	x = d3.time.scale().range([0, width]);
-var	y = d3.scale.linear().range([height, 0]);
+var x = d3.scaleTime()
+    .rangeRound([0, width]);
 
-// Define the axes
-var	xAxis = d3.svg.axis().scale(x)
-	.orient("bottom").ticks(5);
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
 
-var	yAxis = d3.svg.axis().scale(y)
-	.orient("left").ticks(5);
+var line = d3.line()
+	.x(function(d, i) {return x(d[0].day)})
+  .y(function(d) { return y(d.temperatures); });
 
-// Define the line
-var	valueline = d3.svg.line()
-	.x(function(d) { return x(d[0].day); })
-	.y(function(d) { return y(d[0].temperatures.minimum); });
 
-// Adds the svg canvas
-var	svg = d3.select("body")
-	.append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// Get the data
 d3.json("RainJune2016BiltEindhoven.json", function(error, data) {
   if (error) throw error
-  console.log(data[0][0].day)
+
+  console.log(data)
+	for (var i = 0; i < data.length; i++){
+		console.log(dataBilt[i])
+	}
+  console.log(xdataBilt)
   // Scale the range of the data
-  x.domain(d3.extent(data, function(d) { return d[0].day; }));
-  y.domain([0, d3.max(data, function(d) { return d[0].temperatures.minimum; })]);
+  x.domain(d3.extent(data, function(d) { return xdataBilt; }));
+	y.domain(d3.extent(data, function(d) { return ydataBilt; }));
 
-  // Add the valueline path.
-  svg.append("path")
-    .attr("class", "line")
-    .attr("d", valueline(data));
-
-  // Add the X Axis
-  svg.append("g")
-    .attr("class", "x axis")
+  g.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+    .call(d3.axisBottom(x))
+  .select(".domain")
+    .remove();
 
-  // Add the Y Axis
-  svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis);
+g.append("g")
+    .call(d3.axisLeft(y))
+  .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("temperature");
+
+g.append("path")
+    .datum(xdataBilt)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
 
 });
