@@ -6,22 +6,9 @@
 
     Links to used sources:
     d3js.org/d3.v3.min.js
+    https://bl.ocks.org/AdamBlaine1/d6c5a1923f53a60876ad
 
 */
-
-/*
-Make sure that you properly label the axes,
- that the plot has a title and that the data source is explained.
-  Make sure that the date axis uses JavaScript dates,
-   something that is fairly simple using d3.time.format function.
-*/
-
-// single(nu)
-// http://bl.ocks.org/d3noob/b3ff6ae1c120eea654b5
-
-// multiple
-// https://bl.ocks.org/AdamBlaine1/d6c5a1923f53a60876ad
-
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -50,23 +37,21 @@ var svg = d3.select("body").append("svg")
 
 d3.json("RainJune2016BiltEindhoven.json", function(error, data) {
   if (error) throw error;
-  console.log(data[0])
   color.domain(d3.keys(data[0].values[0]).filter(function(key) { return key !== "date"; }));
   data[0].values.forEach(function(d) {
     d.date = parseDate(d.date);
   });
 
   var statistics = color.domain().map(function(statisticType) {
-    return {
+     return {
       name: statisticType,
       values: data[0].values.map(function(d) {
-        return {date: d.date, temperature: d[statisticType]};
+         return {date: d.date, temperature: d[statisticType]};
       })
     };
   });
 
-
-  x.domain(d3.extent(data, function(d) { return d.values.date; }));
+  x.domain(d3.extent(data[0].values, function(d) { return d.date; }));
 
   y.domain([
     d3.min(statistics, function(t) { return d3.min(t.values, function(v) { return v.temperature; }); }),
@@ -95,12 +80,12 @@ d3.json("RainJune2016BiltEindhoven.json", function(error, data) {
 
   statistic.append("path")
       .attr("class", "line")
-      .attr("d", function(d) { return line(d); })
-      .style("stroke", function(d) { return color(d.statisticType); });
+      .attr("d", function(d) {  return line(d.values); })
+      .style("stroke", function(d) { return color(d.name); });
 
   statistic.append("text")
-      .datum(function(d) { return {statisticType: d.values.statisticType, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { console.log(typeof(d.value.date)); return "translate(" + x(d.date) + "," + y(d.value.temperature) + ")"; })
+      .datum(function(d) { console.log(d.name); return {name: d.name, value: d.values[d.values.length - 1]}; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) { return d.name; });
