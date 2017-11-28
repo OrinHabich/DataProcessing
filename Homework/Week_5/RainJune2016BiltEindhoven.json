@@ -1,369 +1,369 @@
 [
  {
-  "key": "De Bilt", 
+  "city": "De Bilt", 
   "values": [
    {
     "average": 192, 
-    "day": "01", 
+    "date": "20160601", 
     "maximum": 243, 
     "minimum": 154
    }, 
    {
     "average": 153, 
-    "day": "02", 
+    "date": "20160602", 
     "maximum": 172, 
     "minimum": 137
    }, 
    {
     "average": 164, 
-    "day": "03", 
+    "date": "20160603", 
     "maximum": 214, 
     "minimum": 137
    }, 
    {
     "average": 201, 
-    "day": "04", 
+    "date": "20160604", 
     "maximum": 275, 
     "minimum": 141
    }, 
    {
     "average": 200, 
-    "day": "05", 
+    "date": "20160605", 
     "maximum": 256, 
     "minimum": 137
    }, 
    {
     "average": 189, 
-    "day": "06", 
+    "date": "20160606", 
     "maximum": 256, 
     "minimum": 117
    }, 
    {
     "average": 201, 
-    "day": "07", 
+    "date": "20160607", 
     "maximum": 265, 
     "minimum": 153
    }, 
    {
     "average": 161, 
-    "day": "08", 
+    "date": "20160608", 
     "maximum": 216, 
     "minimum": 127
    }, 
    {
     "average": 153, 
-    "day": "09", 
+    "date": "20160609", 
     "maximum": 203, 
     "minimum": 110
    }, 
    {
     "average": 164, 
-    "day": "10", 
+    "date": "20160610", 
     "maximum": 212, 
     "minimum": 108
    }, 
    {
     "average": 162, 
-    "day": "11", 
+    "date": "20160611", 
     "maximum": 208, 
     "minimum": 120
    }, 
    {
     "average": 166, 
-    "day": "12", 
+    "date": "20160612", 
     "maximum": 211, 
     "minimum": 135
    }, 
    {
     "average": 159, 
-    "day": "13", 
+    "date": "20160613", 
     "maximum": 190, 
     "minimum": 146
    }, 
    {
     "average": 152, 
-    "day": "14", 
+    "date": "20160614", 
     "maximum": 191, 
     "minimum": 111
    }, 
    {
     "average": 146, 
-    "day": "15", 
+    "date": "20160615", 
     "maximum": 187, 
     "minimum": 113
    }, 
    {
     "average": 157, 
-    "day": "16", 
+    "date": "20160616", 
     "maximum": 211, 
     "minimum": 92
    }, 
    {
     "average": 151, 
-    "day": "17", 
+    "date": "20160617", 
     "maximum": 195, 
     "minimum": 111
    }, 
    {
     "average": 141, 
-    "day": "18", 
+    "date": "20160618", 
     "maximum": 171, 
     "minimum": 99
    }, 
    {
     "average": 153, 
-    "day": "19", 
+    "date": "20160619", 
     "maximum": 189, 
     "minimum": 121
    }, 
    {
     "average": 155, 
-    "day": "20", 
+    "date": "20160620", 
     "maximum": 168, 
     "minimum": 141
    }, 
    {
     "average": 170, 
-    "day": "21", 
+    "date": "20160621", 
     "maximum": 201, 
     "minimum": 134
    }, 
    {
     "average": 201, 
-    "day": "22", 
+    "date": "20160622", 
     "maximum": 249, 
     "minimum": 147
    }, 
    {
     "average": 220, 
-    "day": "23", 
+    "date": "20160623", 
     "maximum": 284, 
     "minimum": 182
    }, 
    {
     "average": 192, 
-    "day": "24", 
+    "date": "20160624", 
     "maximum": 227, 
     "minimum": 133
    }, 
    {
     "average": 154, 
-    "day": "25", 
+    "date": "20160625", 
     "maximum": 193, 
     "minimum": 109
    }, 
    {
     "average": 149, 
-    "day": "26", 
+    "date": "20160626", 
     "maximum": 183, 
     "minimum": 121
    }, 
    {
     "average": 149, 
-    "day": "27", 
+    "date": "20160627", 
     "maximum": 189, 
     "minimum": 109
    }, 
    {
     "average": 167, 
-    "day": "28", 
+    "date": "20160628", 
     "maximum": 218, 
     "minimum": 92
    }, 
    {
     "average": 160, 
-    "day": "29", 
+    "date": "20160629", 
     "maximum": 202, 
     "minimum": 132
    }, 
    {
     "average": 164, 
-    "day": "30", 
+    "date": "20160630", 
     "maximum": 192, 
     "minimum": 144
    }
   ]
  }, 
  {
-  "key": "Eindhoven", 
+  "city": "Eindhoven", 
   "values": [
    {
     "average": 192, 
-    "day": "01", 
+    "date": "20160601", 
     "maximum": 243, 
     "minimum": 154
    }, 
    {
     "average": 153, 
-    "day": "02", 
+    "date": "20160602", 
     "maximum": 172, 
     "minimum": 137
    }, 
    {
     "average": 164, 
-    "day": "03", 
+    "date": "20160603", 
     "maximum": 214, 
     "minimum": 137
    }, 
    {
     "average": 201, 
-    "day": "04", 
+    "date": "20160604", 
     "maximum": 275, 
     "minimum": 141
    }, 
    {
     "average": 200, 
-    "day": "05", 
+    "date": "20160605", 
     "maximum": 256, 
     "minimum": 137
    }, 
    {
     "average": 189, 
-    "day": "06", 
+    "date": "20160606", 
     "maximum": 256, 
     "minimum": 117
    }, 
    {
     "average": 201, 
-    "day": "07", 
+    "date": "20160607", 
     "maximum": 265, 
     "minimum": 153
    }, 
    {
     "average": 161, 
-    "day": "08", 
+    "date": "20160608", 
     "maximum": 216, 
     "minimum": 127
    }, 
    {
     "average": 153, 
-    "day": "09", 
+    "date": "20160609", 
     "maximum": 203, 
     "minimum": 110
    }, 
    {
     "average": 164, 
-    "day": "10", 
+    "date": "20160610", 
     "maximum": 212, 
     "minimum": 108
    }, 
    {
     "average": 162, 
-    "day": "11", 
+    "date": "20160611", 
     "maximum": 208, 
     "minimum": 120
    }, 
    {
     "average": 166, 
-    "day": "12", 
+    "date": "20160612", 
     "maximum": 211, 
     "minimum": 135
    }, 
    {
     "average": 159, 
-    "day": "13", 
+    "date": "20160613", 
     "maximum": 190, 
     "minimum": 146
    }, 
    {
     "average": 152, 
-    "day": "14", 
+    "date": "20160614", 
     "maximum": 191, 
     "minimum": 111
    }, 
    {
     "average": 146, 
-    "day": "15", 
+    "date": "20160615", 
     "maximum": 187, 
     "minimum": 113
    }, 
    {
     "average": 157, 
-    "day": "16", 
+    "date": "20160616", 
     "maximum": 211, 
     "minimum": 92
    }, 
    {
     "average": 151, 
-    "day": "17", 
+    "date": "20160617", 
     "maximum": 195, 
     "minimum": 111
    }, 
    {
     "average": 141, 
-    "day": "18", 
+    "date": "20160618", 
     "maximum": 171, 
     "minimum": 99
    }, 
    {
     "average": 153, 
-    "day": "19", 
+    "date": "20160619", 
     "maximum": 189, 
     "minimum": 121
    }, 
    {
     "average": 155, 
-    "day": "20", 
+    "date": "20160620", 
     "maximum": 168, 
     "minimum": 141
    }, 
    {
     "average": 170, 
-    "day": "21", 
+    "date": "20160621", 
     "maximum": 201, 
     "minimum": 134
    }, 
    {
     "average": 201, 
-    "day": "22", 
+    "date": "20160622", 
     "maximum": 249, 
     "minimum": 147
    }, 
    {
     "average": 220, 
-    "day": "23", 
+    "date": "20160623", 
     "maximum": 284, 
     "minimum": 182
    }, 
    {
     "average": 192, 
-    "day": "24", 
+    "date": "20160624", 
     "maximum": 227, 
     "minimum": 133
    }, 
    {
     "average": 154, 
-    "day": "25", 
+    "date": "20160625", 
     "maximum": 193, 
     "minimum": 109
    }, 
    {
     "average": 149, 
-    "day": "26", 
+    "date": "20160626", 
     "maximum": 183, 
     "minimum": 121
    }, 
    {
     "average": 149, 
-    "day": "27", 
+    "date": "20160627", 
     "maximum": 189, 
     "minimum": 109
    }, 
    {
     "average": 167, 
-    "day": "28", 
+    "date": "20160628", 
     "maximum": 218, 
     "minimum": 92
    }, 
    {
     "average": 160, 
-    "day": "29", 
+    "date": "20160629", 
     "maximum": 202, 
     "minimum": 132
    }, 
    {
     "average": 164, 
-    "day": "30", 
+    "date": "20160630", 
     "maximum": 192, 
     "minimum": 144
    }

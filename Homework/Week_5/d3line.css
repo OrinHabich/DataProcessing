@@ -4,10 +4,17 @@
   Orin Habich 10689508
 */
 body {
-  font: 14px sans-serif;
+  font: 10px sans-serif;
 }
 
-.axis--x path {
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
   display: none;
 }
 

@@ -47,17 +47,21 @@ with open(infile) as csvfile:
         else:
             # create dictionary with all information at this data-point
             dic_values1 = {}
+            dic_temps1 = {}
             dic_values1[name_x_coordinate] = row[0].strip()
-            dic_values1[name_y1_coordinate] = int(row[1].strip())
-            dic_values1[name_y2_coordinate] = int(row[2].strip())
-            dic_values1[name_y3_coordinate] = int(row[3].strip())
-
+            dic_temps1[name_y1_coordinate] = int(row[1].strip())
+            dic_temps1[name_y2_coordinate] = int(row[2].strip())
+            dic_temps1[name_y3_coordinate] = int(row[3].strip())
+            dic_values1["temperatures"] = dic_temps1
             values1.append(dic_values1)
+
+            dic_temps2 = {}
             dic_values2 = {}
             dic_values2[name_x_coordinate] = row[0].strip()
-            dic_values2[name_y4_coordinate] = int(row[4].strip())
-            dic_values2[name_y5_coordinate] = int(row[5].strip())
-            dic_values2[name_y6_coordinate] = int(row[6].strip())
+            dic_temps2[name_y4_coordinate] = int(row[4].strip())
+            dic_temps2[name_y5_coordinate] = int(row[5].strip())
+            dic_temps2[name_y6_coordinate] = int(row[6].strip())
+            dic_values2["temperatures"] = dic_temps2
             values2.append(dic_values2)
 
 dic1 = {}
@@ -66,7 +70,7 @@ dic1["values"] = values1
 data.append(dic1)
 dic2 = {}
 dic2["city"] = "Eindhoven"
-dic2["values"] = values1
+dic2["values"] = values2
 data.append(dic2)
 # write to outfile, with nice layout
 with open(outfile, 'w') as outfile:
