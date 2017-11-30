@@ -188,184 +188,184 @@
   "city": "Eindhoven", 
   "values": [
    {
-    "average": 192, 
+    "average": 173, 
     "date": "20160601", 
-    "maximum": 243, 
-    "minimum": 154
-   }, 
-   {
-    "average": 153, 
-    "date": "20160602", 
-    "maximum": 172, 
-    "minimum": 137
-   }, 
-   {
-    "average": 164, 
-    "date": "20160603", 
-    "maximum": 214, 
-    "minimum": 137
-   }, 
-   {
-    "average": 201, 
-    "date": "20160604", 
-    "maximum": 275, 
-    "minimum": 141
-   }, 
-   {
-    "average": 200, 
-    "date": "20160605", 
-    "maximum": 256, 
-    "minimum": 137
-   }, 
-   {
-    "average": 189, 
-    "date": "20160606", 
-    "maximum": 256, 
-    "minimum": 117
-   }, 
-   {
-    "average": 201, 
-    "date": "20160607", 
-    "maximum": 265, 
-    "minimum": 153
-   }, 
-   {
-    "average": 161, 
-    "date": "20160608", 
-    "maximum": 216, 
-    "minimum": 127
-   }, 
-   {
-    "average": 153, 
-    "date": "20160609", 
-    "maximum": 203, 
-    "minimum": 110
-   }, 
-   {
-    "average": 164, 
-    "date": "20160610", 
-    "maximum": 212, 
-    "minimum": 108
-   }, 
-   {
-    "average": 162, 
-    "date": "20160611", 
-    "maximum": 208, 
+    "maximum": 215, 
     "minimum": 120
    }, 
    {
-    "average": 166, 
-    "date": "20160612", 
-    "maximum": 211, 
-    "minimum": 135
-   }, 
-   {
-    "average": 159, 
-    "date": "20160613", 
-    "maximum": 190, 
-    "minimum": 146
-   }, 
-   {
-    "average": 152, 
-    "date": "20160614", 
-    "maximum": 191, 
-    "minimum": 111
-   }, 
-   {
-    "average": 146, 
-    "date": "20160615", 
-    "maximum": 187, 
-    "minimum": 113
-   }, 
-   {
-    "average": 157, 
-    "date": "20160616", 
-    "maximum": 211, 
-    "minimum": 92
-   }, 
-   {
-    "average": 151, 
-    "date": "20160617", 
-    "maximum": 195, 
-    "minimum": 111
-   }, 
-   {
-    "average": 141, 
-    "date": "20160618", 
-    "maximum": 171, 
-    "minimum": 99
-   }, 
-   {
-    "average": 153, 
-    "date": "20160619", 
-    "maximum": 189, 
-    "minimum": 121
-   }, 
-   {
-    "average": 155, 
-    "date": "20160620", 
-    "maximum": 168, 
-    "minimum": 141
+    "average": 171, 
+    "date": "20160602", 
+    "maximum": 219, 
+    "minimum": 142
    }, 
    {
     "average": 170, 
-    "date": "20160621", 
-    "maximum": 201, 
-    "minimum": 134
+    "date": "20160603", 
+    "maximum": 215, 
+    "minimum": 139
    }, 
    {
-    "average": 201, 
-    "date": "20160622", 
-    "maximum": 249, 
-    "minimum": 147
+    "average": 178, 
+    "date": "20160604", 
+    "maximum": 248, 
+    "minimum": 137
    }, 
    {
-    "average": 220, 
-    "date": "20160623", 
-    "maximum": 284, 
-    "minimum": 182
+    "average": 206, 
+    "date": "20160605", 
+    "maximum": 283, 
+    "minimum": 128
    }, 
    {
-    "average": 192, 
-    "date": "20160624", 
-    "maximum": 227, 
+    "average": 207, 
+    "date": "20160606", 
+    "maximum": 270, 
     "minimum": 133
+   }, 
+   {
+    "average": 207, 
+    "date": "20160607", 
+    "maximum": 276, 
+    "minimum": 150
+   }, 
+   {
+    "average": 180, 
+    "date": "20160608", 
+    "maximum": 232, 
+    "minimum": 119
+   }, 
+   {
+    "average": 162, 
+    "date": "20160609", 
+    "maximum": 218, 
+    "minimum": 101
+   }, 
+   {
+    "average": 169, 
+    "date": "20160610", 
+    "maximum": 230, 
+    "minimum": 85
+   }, 
+   {
+    "average": 182, 
+    "date": "20160611", 
+    "maximum": 219, 
+    "minimum": 146
+   }, 
+   {
+    "average": 172, 
+    "date": "20160612", 
+    "maximum": 228, 
+    "minimum": 151
+   }, 
+   {
+    "average": 154, 
+    "date": "20160613", 
+    "maximum": 204, 
+    "minimum": 138
+   }, 
+   {
+    "average": 158, 
+    "date": "20160614", 
+    "maximum": 212, 
+    "minimum": 124
+   }, 
+   {
+    "average": 148, 
+    "date": "20160615", 
+    "maximum": 196, 
+    "minimum": 105
+   }, 
+   {
+    "average": 151, 
+    "date": "20160616", 
+    "maximum": 214, 
+    "minimum": 84
+   }, 
+   {
+    "average": 156, 
+    "date": "20160617", 
+    "maximum": 204, 
+    "minimum": 129
+   }, 
+   {
+    "average": 145, 
+    "date": "20160618", 
+    "maximum": 181, 
+    "minimum": 122
+   }, 
+   {
+    "average": 150, 
+    "date": "20160619", 
+    "maximum": 192, 
+    "minimum": 113
+   }, 
+   {
+    "average": 158, 
+    "date": "20160620", 
+    "maximum": 189, 
+    "minimum": 131
+   }, 
+   {
+    "average": 175, 
+    "date": "20160621", 
+    "maximum": 208, 
+    "minimum": 150
+   }, 
+   {
+    "average": 213, 
+    "date": "20160622", 
+    "maximum": 263, 
+    "minimum": 143
+   }, 
+   {
+    "average": 246, 
+    "date": "20160623", 
+    "maximum": 317, 
+    "minimum": 193
+   }, 
+   {
+    "average": 203, 
+    "date": "20160624", 
+    "maximum": 238, 
+    "minimum": 156
    }, 
    {
     "average": 154, 
     "date": "20160625", 
-    "maximum": 193, 
-    "minimum": 109
+    "maximum": 185, 
+    "minimum": 105
    }, 
    {
-    "average": 149, 
+    "average": 144, 
     "date": "20160626", 
-    "maximum": 183, 
-    "minimum": 121
+    "maximum": 196, 
+    "minimum": 102
    }, 
    {
-    "average": 149, 
+    "average": 150, 
     "date": "20160627", 
-    "maximum": 189, 
-    "minimum": 109
+    "maximum": 187, 
+    "minimum": 123
    }, 
    {
-    "average": 167, 
+    "average": 178, 
     "date": "20160628", 
-    "maximum": 218, 
-    "minimum": 92
+    "maximum": 230, 
+    "minimum": 131
    }, 
    {
-    "average": 160, 
+    "average": 166, 
     "date": "20160629", 
-    "maximum": 202, 
-    "minimum": 132
+    "maximum": 220, 
+    "minimum": 134
    }, 
    {
-    "average": 164, 
+    "average": 169, 
     "date": "20160630", 
-    "maximum": 192, 
-    "minimum": 144
+    "maximum": 201, 
+    "minimum": 145
    }
   ]
  }
