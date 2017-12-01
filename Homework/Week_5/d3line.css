@@ -1,6 +1,6 @@
 /*
   d3line.css
-  Minor programmeren; DataProcessing; D3 Scatterplot
+  Minor programmeren; DataProcessing; d3line
   Orin Habich 10689508
 */
 body {
@@ -16,6 +16,5 @@ body {
 
 .line {
   fill: none;
-  stroke: red;
   stroke-width: 1.5px;
 }
