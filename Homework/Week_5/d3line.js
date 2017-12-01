@@ -161,7 +161,6 @@ d3.json("RainJune2016BiltEindhoven.json", function(error, data) {
         };
       });
 
-      // remake the y axes
       y.domain([
         d3.min(statistics, function(t) { return d3.min(t.values, function(v) { return v.temperature; }); }),
         d3.max(statistics, function(t) { return d3.max(t.values, function(v) { return v.temperature; }); })
