@@ -1,0 +1,20 @@
+/*
+  linkedViews.css
+  Minor programmeren; DataProcessing; Linked Views
+  Orin Habich 10689508
+*/
+body {
+  font: 16px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
