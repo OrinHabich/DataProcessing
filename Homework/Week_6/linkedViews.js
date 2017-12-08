@@ -129,8 +129,6 @@ function makeCharts(error, dataBarchart, dataPiechart) {
       .attr("dy", "0.32em")
       .text(function(d) { return d; });
 
-
-
   var arc = gPiechart.selectAll(".arc")
     .data(pie(dataPiechart[0]))
     .enter().append("g")
@@ -149,7 +147,7 @@ function makeCharts(error, dataBarchart, dataPiechart) {
   // first add consequences to choice in dropdown menu, later to mouseover
 
   var selector = d3.select("#selector");
-  
+
   // setup dropdown menu
   selector
     .selectAll("option")
@@ -163,24 +161,31 @@ function makeCharts(error, dataBarchart, dataPiechart) {
     .on("change", function(){
       d3.selectAll(".line")
       var value = selector.property("value");
-      updateData(dataPiechart[value])});
+      updateData(dataPiechart[value]);
+    });
 
 
   function updateData(dataChosen) {
+    console.log(dataChosen)
     /*
       Updates the piechart to dataChosen.
     */
 
+    // select the section we want to apply our changes to
+    var svgPiechart = d3.select("body").transition();
+
     var arc = gPiechart.selectAll(".arc")
-      .data(pie(dataPiechart))
+      .data(pie(dataChosen))
       .enter().append("g")
         .attr("class", "arc");
 
     arc.append("path")
+        .duration(1000)
         .attr("d", path)
         .attr("fill", function(d) { return color(d.data.gender); });
 
     arc.append("text")
+      .duration(1000)
         .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
         .attr("dy", "0.35em")
         .text(function(d) { return d.data.gender; });
