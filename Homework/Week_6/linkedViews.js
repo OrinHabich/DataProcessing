@@ -55,10 +55,7 @@ queue()
     d.total = t;
     return d;
   })
-	.defer(d3.csv, "numberZZPgender2003.csv", function(d) {
-    d.number = +d.number;
-    return d;
-  })
+	.defer(d3.json, "numberZZPgender.json")
 	.await(makeCharts);
 
 //d3.csv("numberZZPyears.csv",
@@ -85,6 +82,8 @@ function makeCharts(error, dataBarchart, dataPiechart) {
       .attr("y", function(d) { return y(d[1]); })
       .attr("height", function(d) { return y(d[0]) - y(d[1]); })
       .attr("width", x.bandwidth());
+      // .on("mouseover", "update piechart with data of that year")
+      // .on("mouseout", "update piechart with data of that year");
 
   gBarchart.append("g")
       .attr("class", "axis")
@@ -133,7 +132,7 @@ function makeCharts(error, dataBarchart, dataPiechart) {
 
 
   var arc = gPiechart.selectAll(".arc")
-    .data(pie(dataPiechart))
+    .data(pie(dataPiechart[0]))
     .enter().append("g")
       .attr("class", "arc");
 
@@ -145,5 +144,46 @@ function makeCharts(error, dataBarchart, dataPiechart) {
       .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
       .attr("dy", "0.35em")
       .text(function(d) { return d.data.gender; });
+
+
+  // first add consequences to choice in dropdown menu, later to mouseover
+
+  var selector = d3.select("#selector");
+  
+  // setup dropdown menu
+  selector
+    .selectAll("option")
+    .data(dataPiechart[0])
+    .enter()
+    .append("option")
+    .text(function(d, i) {var year = i + 2003; return year ;})
+    .attr("value", function(d, i) {return i ;});
+
+  selector
+    .on("change", function(){
+      d3.selectAll(".line")
+      var value = selector.property("value");
+      updateData(dataPiechart[value])});
+
+
+  function updateData(dataChosen) {
+    /*
+      Updates the piechart to dataChosen.
+    */
+
+    var arc = gPiechart.selectAll(".arc")
+      .data(pie(dataPiechart))
+      .enter().append("g")
+        .attr("class", "arc");
+
+    arc.append("path")
+        .attr("d", path)
+        .attr("fill", function(d) { return color(d.data.gender); });
+
+    arc.append("text")
+        .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+        .attr("dy", "0.35em")
+        .text(function(d) { return d.data.gender; });
+    };
 
 };
