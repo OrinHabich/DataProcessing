@@ -3,13 +3,22 @@ Orin Habich 10689508-->
 <!DOCTYPE html>
 <html>
   <head>
-    <h1>Title</h1>
-    <a href="http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi">Source KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)</a>
+    <h2>The number of freelancers per age group per year.</h2>
+    <p>
+      Source: Centraal Bureau voor Statistiek <br>
+    <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=0&D3=0,7-8,11&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
+       for the barchart</a><br>
+   <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=a&D3=0&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
+      for the piechart</a>
+    </p>
     <h4>By Orin Habich 10689508</h4>
     <link rel="stylesheet" href="linkedViews.css">
-    <script src="d3.js"></script>
+    <script src="d3version4.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
   </head>
   <body>
+    <svg id = "svgBarchart" width="800" height="400"></svg>
+    <svg id = "svgPiechart" width="800" height="300"></svg>
     <script src="linkedViews.js"></script>
   </body>
 </html>
