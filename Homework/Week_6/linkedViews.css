@@ -3,16 +3,25 @@
   Minor programmeren; DataProcessing; Linked Views
   Orin Habich 10689508
 */
+
+
 body {
-  font: 16px sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 960px;
 }
 
-
-.arc text {
+text {
   font: 10px sans-serif;
-  text-anchor: middle;
 }
 
-.arc path {
-  stroke: #fff;
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+input {
+  margin: 0 7px;
 }

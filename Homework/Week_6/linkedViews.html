@@ -3,6 +3,14 @@ Orin Habich 10689508-->
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="linkedViews.css">
+    <script src="d3version4.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="linkedViews.js"></script>
+  </head>
+  <body>
+    <svg id = "svgBarchart" width="800" height="400"></svg>
+    <svg id = "svgPiechart" width="200" height="200"></svg>
     <h2>The number of freelancers, per age group, per year, per gender.</h2>
     <p>
       Source: Centraal Bureau voor Statistiek <br>
@@ -12,14 +20,5 @@ Orin Habich 10689508-->
       for the piechart</a>
     </p>
     <h4>By Orin Habich 10689508</h4>
-    <link rel="stylesheet" href="linkedViews.css">
-    <script src="d3version4.js"></script>
-    <script src="https://d3js.org/queue.v1.min.js"></script>
-  </head>
-  <body>
-    <select id="selector"></select>
-    <svg id = "svgBarchart" width="800" height="400"></svg>
-    <svg id = "svgPiechart" width="800" height="300"></svg>
-    <script src="linkedViews.js"></script>
   </body>
 </html>
