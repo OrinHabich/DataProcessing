@@ -11,28 +11,8 @@
   What other links should be here? Surely more than one!
 
   List of issues:
-    A tooltip should be added to the piechart according to the previous feedback.
 
     There is much more to do:
-      Step 4: bootstrap
-      Use bootstrap to optimize the design of your website.
-      “Bootstrap is the most popular HTML, CSS, and JS framework for developing
-      responsive, mobile first projects on the web.”. Take your time to get to know
-      bootstrap through e.g. this excellent bootstrap tutorial.
-
-      Add another interactive element to change an additional variable using bootstrap.
-      You can choose from: a button, a drop down, a search balk.
-      If you would like to add an interactive table or another element you
-      must first get a permission from your TA.
-      You can also add a navigation balk to re-direct to the texts for step 5 and 6.
-      Step 5: storytelling
-
-      Write a short description of your data and the story that you want to tell
-      with it (you can create a separate tab for it on your website or place the
-      text under your visualisations). Check whether the description matches with
-      the design and the functionality of your interactive linked views.
-      Which storytelling model and which genre(s) do you use? Did you make your point?
-
       Step 6: design choices
       Describe the design process and for each step all your design choices
       (in separate pdf document). You can simply use bullet points so that we
@@ -63,6 +43,8 @@ function load() {
 
     var y = d3.scaleLinear()
         .rangeRound([heightBarchart, 0]);
+
+   colorsBarchart = ["#FF8C00", "#006400", "#9932CC"]
 
     var z = d3.scaleOrdinal()
         .range(["#FF8C00", "#006400", "#9932CC"]);
@@ -125,11 +107,19 @@ function load() {
             .attr("width", x.bandwidth())
             .on("mouseover", function(d) {
                 var xPosition = d.data.year;
-                makePiechart(dataPiechart[xPosition - 2003]);
-                return
-            })
-            .on("mouseout", function(d) {
-                gPiechart.selectAll(".arc").data([]).exit().remove();
+                var yPosition = d3.select(this.parentNode).attr("fill");
+                if (yPosition == colorsBarchart[0]) {
+                  gPiechart.selectAll(".arc").data([]).exit().remove();
+                  makePiechart(dataPiechart[xPosition - 2003]["15-25"]);
+                }
+                else if (yPosition == colorsBarchart[1]) {
+                  gPiechart.selectAll(".arc").data([]).exit().remove();
+                  makePiechart(dataPiechart[xPosition - 2003]["25-45"]);
+                }
+                else if (yPosition == colorsBarchart[2]) {
+                  gPiechart.selectAll(".arc").data([]).exit().remove();
+                  makePiechart(dataPiechart[xPosition - 2003]["45-75"]);
+                }
                 return
             });
 
@@ -176,6 +166,9 @@ function load() {
             .attr("y", 9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
+
+      // Draw a default pie chart
+      makePiechart(dataPiechart[0]["15-25"])
     };
 
     function makePiechart(dataChosen) {

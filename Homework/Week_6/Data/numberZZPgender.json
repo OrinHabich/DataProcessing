@@ -1,152 +1,527 @@
 [
-  [
-    {
-      "gender": "male",
-      "number": 409
+  {
+    "15-25":
+        [
+          {
+          "gender": "male",
+          "number": 18
+          },
+          {
+            "gender": "female",
+            "number": 13
+          }
+        ],
+    "25-45":
+        [
+          {
+          "gender": "male",
+          "number": 191
+          },
+          {
+            "gender": "female",
+            "number": 99
+          }
+        ],
+    "45-75":
+        [
+          {
+          "gender": "male",
+          "number": 200
+          },
+          {
+            "gender": "female",
+            "number": 113
+          }
+        ]
+  },
+  {
+    "15-25":
+        [
+          {
+          "gender": "male",
+          "number": 19
+          },
+          {
+            "gender": "female",
+            "number": 13
+          }
+        ],
+    "25-45":
+        [
+          {
+          "gender": "male",
+          "number": 191
+          },
+          {
+            "gender": "female",
+            "number": 108
+          }
+        ],
+    "45-75":
+        [
+          {
+          "gender": "male",
+          "number": 199
+          },
+          {
+            "gender": "female",
+            "number": 124
+          }
+        ]
     },
     {
-      "gender": "female",
-      "number": 224
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 408
+      "15-25":
+          [
+            {
+            "gender": "male",
+            "number": 19
+            },
+            {
+              "gender": "female",
+              "number": 15
+            }
+          ],
+      "25-45":
+          [
+            {
+            "gender": "male",
+            "number": 191
+            },
+            {
+              "gender": "female",
+              "number": 105
+            }
+          ],
+      "45-75":
+          [
+            {
+            "gender": "male",
+            "number": 218
+            },
+            {
+              "gender": "female",
+              "number": 130
+            }
+          ]
     },
     {
-      "gender": "female",
-      "number": 245
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 428
-    },
-    {
-      "gender": "female",
-      "number": 249
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 450
-    },
-    {
-      "gender": "female",
-      "number": 261
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 482
-    },
-    {
-      "gender": "female",
-      "number": 276
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 506
-    },
-    {
-      "gender": "female",
-      "number": 304
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 524
-    },
-    {
-      "gender": "female",
-      "number": 319
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 546
-    },
-    {
-      "gender": "female",
-      "number": 319
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 551
-    },
-    {
-      "gender": "female",
-      "number": 324
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 569
-    },
-    {
-      "gender": "female",
-      "number": 337
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 600
-    },
-    {
-      "gender": "female",
-      "number": 357
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 620
-    },
-    {
-      "gender": "female",
-      "number": 368
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 626
-    },
-    {
-      "gender": "female",
-      "number": 396
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 630
-    },
-    {
-      "gender": "female",
-      "number": 398
-    }
-  ],
-  [
-    {
-      "gender": "male",
-      "number": 643
-    },
-    {
-      "gender": "female",
-      "number": 411
-    }
-  ]
+      "15-25":
+          [
+            {
+            "gender": "male",
+            "number": 21
+            },
+            {
+              "gender": "female",
+              "number": 14
+            }
+          ],
+      "25-45":
+          [
+            {
+            "gender": "male",
+            "number": 193
+            },
+            {
+              "gender": "female",
+              "number": 118
+            }
+          ],
+      "45-75":
+          [
+            {
+            "gender": "male",
+            "number": 236
+            },
+            {
+              "gender": "female",
+              "number": 128
+            }
+          ]
+      },
+      {
+        "15-25":
+            [
+              {
+              "gender": "male",
+              "number": 23
+              },
+              {
+                "gender": "female",
+                "number": 16
+              }
+            ],
+        "25-45":
+            [
+              {
+              "gender": "male",
+              "number": 206
+              },
+              {
+                "gender": "female",
+                "number": 122
+              }
+            ],
+        "45-75":
+            [
+              {
+              "gender": "male",
+              "number": 252
+              },
+              {
+                "gender": "female",
+                "number": 138
+              }
+            ]
+      },
+      {
+        "15-25":
+            [
+              {
+              "gender": "male",
+              "number": 27
+              },
+              {
+                "gender": "female",
+                "number": 17
+              }
+            ],
+        "25-45":
+            [
+              {
+              "gender": "male",
+              "number": 211
+              },
+              {
+                "gender": "female",
+                "number": 126
+              }
+            ],
+        "45-75":
+            [
+              {
+              "gender": "male",
+              "number": 267
+              },
+              {
+                "gender": "female",
+                "number": 162
+              }
+            ]
+        },
+        {
+          "15-25":
+              [
+                {
+                "gender": "male",
+                "number": 27
+                },
+                {
+                  "gender": "female",
+                  "number": 20
+                }
+              ],
+          "25-45":
+              [
+                {
+                "gender": "male",
+                "number": 213
+                },
+                {
+                  "gender": "female",
+                  "number": 129
+                }
+              ],
+          "45-75":
+              [
+                {
+                "gender": "male",
+                "number": 285
+                },
+                {
+                  "gender": "female",
+                  "number": 170
+                }
+              ]
+        },
+        {
+          "15-25":
+              [
+                {
+                "gender": "male",
+                "number": 30
+                },
+                {
+                  "gender": "female",
+                  "number": 18
+                }
+              ],
+          "25-45":
+              [
+                {
+                "gender": "male",
+                "number": 219
+                },
+                {
+                  "gender": "female",
+                  "number": 127
+                }
+              ],
+          "45-75":
+              [
+                {
+                "gender": "male",
+                "number": 298
+                },
+                {
+                  "gender": "female",
+                  "number": 174
+                }
+              ]
+          },
+          {
+            "15-25":
+                [
+                  {
+                  "gender": "male",
+                  "number": 27
+                  },
+                  {
+                    "gender": "female",
+                    "number": 19
+                  }
+                ],
+            "25-45":
+                [
+                  {
+                  "gender": "male",
+                  "number": 221
+                  },
+                  {
+                    "gender": "female",
+                    "number": 132
+                  }
+                ],
+            "45-75":
+                [
+                  {
+                  "gender": "male",
+                  "number": 304
+                  },
+                  {
+                    "gender": "female",
+                    "number": 173
+                  }
+                ]
+          },
+          {
+            "15-25":
+                [
+                  {
+                  "gender": "male",
+                  "number": 26
+                  },
+                  {
+                    "gender": "female",
+                    "number": 18
+                  }
+                ],
+            "25-45":
+                [
+                  {
+                  "gender": "male",
+                  "number": 219
+                  },
+                  {
+                    "gender": "female",
+                    "number": 137
+                  }
+                ],
+            "45-75":
+                [
+                  {
+                  "gender": "male",
+                  "number": 323
+                  },
+                  {
+                    "gender": "female",
+                    "number": 182
+                  }
+                ]
+            },
+            {
+              "15-25":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 35
+                    },
+                    {
+                      "gender": "female",
+                      "number": 25
+                    }
+                  ],
+              "25-45":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 233
+                    },
+                    {
+                      "gender": "female",
+                      "number": 140
+                    }
+                  ],
+              "45-75":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 331
+                    },
+                    {
+                      "gender": "female",
+                      "number": 192
+                    }
+                  ]
+            },
+            {
+              "15-25":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 32
+                    },
+                    {
+                      "gender": "female",
+                      "number": 23
+                    }
+                  ],
+              "25-45":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 230
+                    },
+                    {
+                      "gender": "female",
+                      "number": 141
+                    }
+                  ],
+              "45-75":
+                  [
+                    {
+                    "gender": "male",
+                    "number": 359
+                    },
+                    {
+                      "gender": "female",
+                      "number": 203
+                    }
+                  ]
+              },
+              {
+                "15-25":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 34
+                      },
+                      {
+                        "gender": "female",
+                        "number": 29
+                      }
+                    ],
+                "25-45":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 220
+                      },
+                      {
+                        "gender": "female",
+                        "number": 146
+                      }
+                    ],
+                "45-75":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 373
+                      },
+                      {
+                        "gender": "female",
+                        "number": 221
+                      }
+                    ]
+              },
+              {
+                "15-25":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 36
+                      },
+                      {
+                        "gender": "female",
+                        "number": 28
+                      }
+                    ],
+                "25-45":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 224
+                      },
+                      {
+                        "gender": "female",
+                        "number": 144
+                      }
+                    ],
+                "45-75":
+                    [
+                      {
+                      "gender": "male",
+                      "number": 370
+                      },
+                      {
+                        "gender": "female",
+                        "number": 226
+                      }
+                    ]
+                },
+                {
+                  "15-25":
+                      [
+                        {
+                        "gender": "male",
+                        "number": 29
+                        },
+                        {
+                          "gender": "female",
+                          "number": 24
+                        }
+                      ],
+                  "25-45":
+                      [
+                        {
+                        "gender": "male",
+                        "number": 224
+                        },
+                        {
+                          "gender": "female",
+                          "number": 148
+                        }
+                      ],
+                  "45-75":
+                      [
+                        {
+                        "gender": "male",
+                        "number": 391
+                        },
+                        {
+                          "gender": "female",
+                          "number": 239
+                        }
+                      ]
+                }
 ]

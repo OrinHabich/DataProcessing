@@ -3,23 +3,44 @@ Orin Habich 10689508-->
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="linkedViews.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="cssfiles/bootstrap.css">
+    <script src="Data/jqueryAjax.js"></script>
+    <script src="Data/bootstrap.js"></script>
+    <link rel="stylesheet" href="cssfiles/linkedViews.css">
     <script src="/Data/d3version4.js"></script>
-    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="/Data/queueVersion1.js"></script>
     <script src="linkedViews.js"></script>
   </head>
   <body>
     <h2>The number of freelancers, per age group, per year, per gender.</h2>
     <h4>By Orin Habich 10689508</h4>
-    <svg id = "svgBarchart" width="800" height="400"></svg>
-    <svg id = "svgPiechart" width="200" height="200"></svg>
-    <p>
-      Source: Centraal Bureau voor Statistiek <br>
-    <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=0&D3=0,7-8,11&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
-       for the barchart</a><br>
-    <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=a&D3=0&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
-      for the piechart</a>
-    </p>
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-12" >
+                  <svg id = "svgBarchart" width="800" height="400"></svg>
+              </div>
+          <div class="col-sm-6" >
+              <svg id = "svgPiechart" width="200" height="200"></svg>
+          </div>
+          <div class="col-sm-4" >
+              <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">What can we see in these visualisations?</button>
+              <div id="demo" class="collapse">
+              The number of freelancers in the Netherlands is growing.
+              These data visualisations show how the proportions, and the male/ female ratio is changing.
+              Hovering over the barcharts updates the piechart for the specific year and age group.
+              Differentiating between year, age group and gender allows for a more profound analysis of the data.
+              One thing we can tell from these charts is that the ratio male/ female freelancers is more equal under young adults, then in higher age groups.
+              <p>
+                  Source for the data:<br> Centraal Bureau voor Statistiek <br>
+                  <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=0&D3=0,7-8,11&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
+                   for the barchart</a><br>
+                  <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=82646ned&D1=0&D2=a&D3=0&D4=19&D5=4,9,14,19,24,29,34,39,44,49,54,59,64,69,l&HDR=T,G3,G2&STB=G1,G4&VW=T">
+                  for the piechart</a>
+              </p>
+          </div>
+      </div>
+</div>
 
   </body>
 </html>
