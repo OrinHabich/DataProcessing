@@ -31,7 +31,7 @@ window.onload = load;
 function load() {
     // variables for the barchart
     var svgBarchart = d3.select("#svgBarchart"),
-        margin = {top: 20, right: 80, bottom: 30, left: 40},
+        margin = {top: 20, right: 80, bottom: 30, left: 60},
         widthBarchart = +svgBarchart.attr("width") - margin.left - margin.right,
         heightBarchart = +svgBarchart.attr("height") - margin.top - margin.bottom,
         gBarchart = svgBarchart.append("g").attr("id", "Barchart").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -65,12 +65,12 @@ function load() {
         .value(function(d) { return d.number; });
 
     var path = d3.arc()
-        .outerRadius(radius - 10)
+        .outerRadius(radius)
         .innerRadius(0);
 
     var label = d3.arc()
-        .outerRadius(radius - 40)
-        .innerRadius(radius - 40);
+        .outerRadius(radius + 20)
+        .innerRadius(radius - 100);
 
     // load the data and create barchart and piechart
     // NOTE the syntax for loading from seperate folder (Data) may not be correct
@@ -189,7 +189,6 @@ function load() {
 
       arc.append("text")
           .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
-          .attr("dy", "0.35em")
           .text(function(d) { return d.data.gender; });
     };
 
