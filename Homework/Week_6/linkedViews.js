@@ -75,12 +75,12 @@ function load() {
     // load the data and create barchart and piechart
     // NOTE the syntax for loading from seperate folder (Data) may not be correct
     queue()
-        .defer(d3.csv, "/Data/numberZZPyears.csv", function(d, i, columns) {
+        .defer(d3.csv, "Data/numberZZPyears.csv", function(d, i, columns) {
             for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
-      	.defer(d3.json, "/Data/numberZZPgender.json")
+      	.defer(d3.json, "Data/numberZZPgender.json")
       	.await(makeCharts);
 
     function makeCharts(error, dataBarchart, dataPiechart) {
