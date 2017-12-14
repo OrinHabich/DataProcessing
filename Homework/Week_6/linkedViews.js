@@ -3,32 +3,18 @@
   Minor programmeren; DataProcessing; Linked Views
   Orin Habich 10689508
 
-  Here D3 is used to implement an interactive barchart and link the bars
+  Here D3 is used to implement a stacked barchart and link the bars
   to a pie chart.
 
   Links to used sources:
   https://bl.ocks.org/mbostock/3886208
-  What other links should be here? Surely more than one!
-
-  List of issues:
-
-    There is much more to do:
-      Step 6: design choices
-      Describe the design process and for each step all your design choices
-      (in separate pdf document). You can simply use bullet points so that we
-      can follow the steps that you have taken. Think about the specific design
-      choices for each visualisation, interaction design, the overall website
-      design and also about the technical design (e.g. how do your visualisations communicate?).
-
-      Step 7: code optimization
-      Take at least few hours to critically look at your code. Use this guidelines
-      to optimize your code. The assessment of your code will be very strict
-      this week and based on those guidelines.
+  https://bl.ocks.org/mbostock/3887235
 */
 
 window.onload = load;
 
 function load() {
+
     // variables for the barchart
     var svgBarchart = d3.select("#svgBarchart"),
         margin = {top: 20, right: 80, bottom: 30, left: 60},
@@ -41,39 +27,32 @@ function load() {
         .paddingInner(0.05)
         .align(0.1);
 
-    var y = d3.scaleLinear()
-        .rangeRound([heightBarchart, 0]);
+    var y = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-   colorsBarchart = ["#FF8C00", "#006400", "#9932CC"]
+    var colorsBarchart = ["#FF8C00", "#006400", "#9932CC"];
 
-    var z = d3.scaleOrdinal()
-        .range(["#FF8C00", "#006400", "#9932CC"]);
-
-    var color = d3.scaleOrdinal(["#1E90FF", "#FF69B4"]);
+    var z = d3.scaleOrdinal().range(colorsBarchart);
 
     // variables for the piechart
-     var svgPiechart = d3.select("#svgPiechart"),
+    var svgPiechart = d3.select("#svgPiechart"),
         widthPiechart = +svgPiechart.attr("width"),
         heightPiechart = +svgPiechart.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechart = svgPiechart.append("g").attr("id", "Piechart").attr("transform", "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
+        gPiechart = svgPiechart.append("g").attr("id", "Piechart")
+            .attr("transform",
+             "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
-    var color = d3.scaleOrdinal(["#1E90FF", "#FF69B4"]);
+    var colorsPiechart = d3.scaleOrdinal(["#1E90FF", "#FF69B4"]);
 
     var pie = d3.pie()
         .sort(null)
         .value(function(d) { return d.number; });
 
-    var path = d3.arc()
-        .outerRadius(radius)
-        .innerRadius(0);
+    var path = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var label = d3.arc()
-        .outerRadius(radius + 20)
-        .innerRadius(radius - 100);
+    var label = d3.arc().outerRadius(radius + 20).innerRadius(radius - 100);
 
-    // load the data and create barchart and piechart
-    // NOTE the syntax for loading from seperate folder (Data) may not be correct
+    // load the data and call makeCharts()
     queue()
         .defer(d3.csv, "Data/numberZZPyears.csv", function(d, i, columns) {
             for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -86,13 +65,13 @@ function load() {
     function makeCharts(error, dataBarchart, dataPiechart) {
         if (error) throw error;
 
-        // make the barchart
         var keys = dataBarchart.columns.slice(1);
 
         x.domain(dataBarchart.map(function(d) { return d.year; }));
         y.domain([0, d3.max(dataBarchart, function(d) { return d.total; })]).nice();
         z.domain(keys);
 
+        // make the barchart
         gBarchart.append("g")
             .selectAll("g")
             .data(d3.stack().keys(keys)(dataBarchart))
@@ -106,8 +85,12 @@ function load() {
             .attr("height", function(d) { return y(d[0]) - y(d[1]); })
             .attr("width", x.bandwidth())
             .on("mouseover", function(d) {
+
+                // obtain x and y position
                 var xPosition = d.data.year;
                 var yPosition = d3.select(this.parentNode).attr("fill");
+
+                // remake piechart, matching the current part of the bar
                 if (yPosition == colorsBarchart[0]) {
                   gPiechart.selectAll(".arc").data([]).exit().remove();
                   makePiechart(dataPiechart[xPosition - 2003]["15-25"]);
@@ -123,6 +106,7 @@ function load() {
                 return
             });
 
+        // make x axis
         gBarchart.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + heightBarchart + ")")
@@ -134,6 +118,7 @@ function load() {
             .attr("text-anchor", "start")
             .text("Year");
 
+      // make y axis
       gBarchart.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(y))
@@ -172,10 +157,8 @@ function load() {
     };
 
     function makePiechart(dataChosen) {
-       /*
-         Updates the piechart to dataChosen.
-         This function doesn't work, the body is currently just a copy of the
-         make piechart part above.
+       /*   Creates a piechart for the given data.
+            Args: An appriopiate data set.
        */
 
        var arc = gPiechart.selectAll(".arc")
@@ -185,7 +168,7 @@ function load() {
 
       arc.append("path")
           .attr("d", path)
-          .attr("fill", function(d) { return color(d.data.gender); });
+          .attr("fill", function(d) { return colorsPiechart(d.data.gender); });
 
       arc.append("text")
           .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
