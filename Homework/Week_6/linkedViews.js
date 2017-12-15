@@ -11,9 +11,12 @@
   https://bl.ocks.org/mbostock/3887235
 */
 
-window.onload = load;
+window.onload = afterLoad;
 
-function load() {
+function afterLoad() {
+    /*  This executes the whole script,
+        but it is called only when the window is loaded.
+    */
 
     // variables for the barchart
     var svgBarchart = d3.select("#svgBarchart"),
@@ -42,6 +45,10 @@ function load() {
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
+     var PieTitle = d3.select("#Piechart").append("div")
+     .attr("class", "tooltip")
+     .style("opacity", 0);
+
     var colorsPiechart = d3.scaleOrdinal(["#1E90FF", "#FF69B4"]);
 
     var pie = d3.pie()
@@ -63,6 +70,9 @@ function load() {
       	.await(makeCharts);
 
     function makeCharts(error, dataBarchart, dataPiechart) {
+        /*   Creates charts based on the given data.
+             Args: Appriopiate datasets.
+        */
         if (error) throw error;
 
         var keys = dataBarchart.columns.slice(1);
@@ -94,14 +104,17 @@ function load() {
                 if (yPosition == colorsBarchart[0]) {
                   gPiechart.selectAll(".arc").data([]).exit().remove();
                   makePiechart(dataPiechart[xPosition - 2003]["15-25"]);
+                  titlePiechart(xPosition, "15-25");
                 }
                 else if (yPosition == colorsBarchart[1]) {
                   gPiechart.selectAll(".arc").data([]).exit().remove();
                   makePiechart(dataPiechart[xPosition - 2003]["25-45"]);
+                  titlePiechart(xPosition, "25-45");
                 }
                 else if (yPosition == colorsBarchart[2]) {
                   gPiechart.selectAll(".arc").data([]).exit().remove();
                   makePiechart(dataPiechart[xPosition - 2003]["45-75"]);
+                  titlePiechart(xPosition, "45-75");
                 }
                 return
             });
@@ -175,4 +188,14 @@ function load() {
           .text(function(d) { return d.data.gender; });
     };
 
+    function titlePiechart(year, ageGroup) {
+      /*   Creates a title for the piechart.
+           Args: The year and the age group.
+      */
+      d3.select(".tooltip").transition().style("opacity", 1);
+
+      d3.select(".tooltip").html(("year: " + year) + "<br/>" + "age group: " + ageGroup)
+          .style("left", 0)
+          .style("top", heightPiechart);
+    };
 };
